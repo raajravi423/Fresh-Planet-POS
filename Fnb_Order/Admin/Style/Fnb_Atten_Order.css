@@ -1,0 +1,940 @@
+﻿     .lbl-field1 {
+            color: purple;
+            font-size: 13px;
+            padding-left: 10px;
+        }
+
+        .lbl-field {
+            color: purple;
+            font-size: 13px;
+            padding-left: 10px;
+            width: 45%;
+            float: left;
+            text-align: left;
+            line-height: 30px;
+        }
+
+        .box-header {
+            color: #ff9900;
+            float: left;
+            font-size: 13px;
+            font-weight: bold;
+            padding-left: 5px;
+            padding-top: 5px;
+        }
+
+        .main-content {
+            border: 1px solid #c7c7c7;
+            border-radius: 4px;
+            box-shadow: 2px 2px 7px #ccc;
+            height: auto;
+            margin-top: 15px;
+            min-height: 450px;
+            overflow: auto;
+            padding-bottom: 20px;
+            width: 100%;
+        }
+
+        .dv-header {
+            background-color: #f9f9f9;
+            font-size: 22px;
+            line-height: 50px;
+        }
+
+        .row {
+            border-bottom: 1px solid #c7c7c7;
+        }
+
+
+        .main-header-text {
+            text-align: center;
+            width: 100%;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+
+        .form-control {
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: #555;
+            display: block;
+            font-size: 14px;
+            line-height: 1.42857;
+            padding: 6px 12px;
+            width: 100%;
+        }
+
+
+        .btn {
+            -moz-user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.42857;
+            margin-bottom: 0;
+            padding: 6px 12px;
+            text-align: center;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-color: #2980b9;
+            border-color: #2472a4;
+            color: #fff;
+        }
+
+            .btn-primary:hover {
+                background-color: #20638f;
+            }
+
+        .row1 {
+            width: 100%;
+            overflow: auto;
+        }
+
+textarea {
+    resize: none;
+}
+
+.app-page {
+    border: 1px solid #c7c7c7;
+    border-radius: 4px;
+    margin-top: 15px;
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+
+.row {
+    border-bottom: 1px solid #c7c7c7;
+}
+
+.dv-header {
+    background-color: #F9F9F9;
+    line-height: 50px;
+    font-size:22px;
+}
+
+.dv-sub-header {
+    text-align: left;
+    width: 100%;
+    color: #f39c12;
+    background-color: #fcf8e3;
+    line-height: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    height: 100%;
+    overflow: auto;
+}
+
+.Left-section {
+    float: left;
+    width: 80.95%;
+    border: 1px solid #c7c7c7;
+    border-radius: 4px;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 0.75%;
+    margin-right: 0.75%;
+    padding-top: 5px;
+    overflow: auto;
+    padding-bottom: 20px;
+}
+
+.Right-section {
+    float: right;
+    width: 15%;
+    border: 1px solid #c7c7c7;
+    border-radius: 4px;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    margin-left: 0.75%;
+    margin-right: 0.75%;
+    text-align: center;
+    padding-top: 15px;
+    overflow: auto;
+    padding-bottom: 20px;
+}
+
+
+.Hospital-service {
+    float: left;
+    width: 48%;
+    border: 1px solid #c7c7c7;
+    border-radius: 0px;
+    height: auto;
+    margin: 0px 0px 20px 15px;
+    overflow: visible;
+   
+}
+
+.Patient-service {
+    float: right;
+    width: 58.75%;
+    border: 1px solid #c7c7c7;
+    border-radius: 4px;
+    height: auto;
+    margin-right: 10px;
+    text-align: center;
+    overflow: auto;
+    padding-bottom: 20px;
+}
+
+.Billing-service {
+    width: 98.3%;
+    border: 1px solid #c7c7c7;
+    border-radius: 4px;
+    height: auto;
+    margin: 10px 10px 10px 10px;
+    text-align: left;
+    overflow: hidden;
+    float: left;
+}
+
+.Billing-main-section {
+    width: 98%;
+    height: auto;
+    border: 1px solid #c7c7c7;
+    border-radius: 4px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.main-header-text {
+    text-align: center;
+    width: 100%;
+}
+
+h3 {
+    padding-left: 0px 8px 0px 8px;
+    clear: both;
+    color: #256c89;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0;
+    padding-left: 10px;
+}
+
+.h3-patient-detail {
+    width: 83%;
+}
+
+.profile-image {
+    width: 128px;
+    height: 128px;
+}
+
+.patient-detail {
+    font-size: 10px;
+}
+
+.complete-width {
+    width: inherit;
+}
+
+.form-colomn {
+    width: 29.50%;
+    float: left;
+}
+
+.form-colomn_1 {
+    width: 30%;
+    float: left;
+}
+
+.form-colomn_2 {
+    width: 32%;
+    float: left;
+}
+
+.form-small-contorl-float {
+    float: left;
+    width: 5%;
+}
+
+.label-text {
+    float: left;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.label-text-width {
+    width: 43%;
+    text-align: right;
+    line-height: 24px;
+    font-weight: normal;
+    font-size: 10px;
+    color: #333333;
+    vertical-align: middle;
+}
+
+.label-text-width_1 {
+    width: 46%;
+    text-align: right;
+    line-height: 30px;
+    font-weight: normal;
+    font-size: 10px;
+    color: #333333;
+}
+
+.form-control-checkbox {
+    margin-top: 5px;
+}
+
+.form-control-text {
+    width: 100%;
+}
+
+.form-control-dropdown {
+    width: 118%;
+}
+
+.form-control {
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #555;
+    display: block;
+    font-size: 11px;
+    padding: 6px 12px;
+}
+
+    .form-control:focus {
+        border-color: #000;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(0, 0, 0, .6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(0, 0, 0, .6);
+    }
+
+.div-form-control {
+    width: 50%;
+    text-align: left;
+    float: left;
+}
+
+.row-control {
+    line-height: 20px;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    height: 30px;
+    vertical-align: baseline;
+}
+
+.patient-detail-form {
+    width: 95%;
+}
+
+.side-bar {
+    width: 11.55%;
+    float: left;
+    height: auto;
+    overflow: auto;
+}
+
+.side-sub-bar:hover {
+    color: rgba(0, 0, 0, .6);
+}
+
+.side-sub-bar {
+    border: 1px solid #ccc;
+    height: 40px;
+    line-height: 40px;
+    width: 98%;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+}
+
+.background-before {
+    background-color: #FFFFF8;
+}
+
+.background-after {
+    background-color: #FFFFFF;
+    border-right-color: #FFFFFF;
+}
+
+.main-bar {
+    width: 87.1%;
+    float: right;
+    vertical-align: top;
+}
+
+.billing-layout {
+    margin-top: 10px;
+    overflow: hidden;
+    padding-bottom: 15px;
+}
+
+.billing-visibility {
+    display: none;
+}
+
+.bs1 {
+    padding-top: 20px;
+}
+
+.bs2 {
+    padding-bottom: 5px;
+}
+
+span.filt-sec {
+    font-size: 10px;
+    color: #333333;
+    cursor: pointer;
+}
+
+    span.filt-sec:hover {
+        color: rgba(0, 0, 0, .6);
+    }
+
+.Payment-section {
+    border: 1px solid #c7c7c7;
+    border-radius: 4px;
+    float: left;
+    height: auto;
+    margin: 10px 5%;
+    overflow: auto;
+    padding-bottom: 20px;
+    padding-top: 5px;
+    width: 90%;
+}
+
+.form-control-smalltext {
+    width: 10%;
+    float: left;
+}
+
+.small-span-text {
+    float: left;
+    color: #333333;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 6px;
+    line-height: 12px;
+    vertical-align: middle;
+
+}
+
+.Payment-section-sub {
+    border-radius: 4px;
+    float: left;
+    height: auto;
+    margin: 10px 5%;
+    /*overflow: auto;*/
+    width: 90%;
+}
+
+.Payment-section-sub1 {
+    border: 1px solid #c7c7c7;
+}
+
+.dv-sub-header_1 {
+    background-color: #fcf8e3;
+    color: #f39c12;
+    font-size: 13px;
+    font-weight: 600;
+    height: 100%;
+    line-height: 20px;
+    overflow: auto;
+    text-align: left;
+    width: 100%;
+}
+
+.btn-default {
+    background-color: #dcdcdc;
+    border: 1px solid #ccc;
+    color: #333;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857;
+    margin-bottom: 0;
+    padding: 2px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    margin-left: 20px;
+}
+
+    .btn-default:hover {
+        background-color: #ccc;
+    }
+
+.btn {
+    -moz-user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857;
+    margin-bottom: 0;
+    padding: 2px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    margin-left: 20px;
+}
+
+input[type="radio"] {
+    border: none;
+    margin-top: 4px;
+}
+
+.btn-sm {
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 5px 10px;
+}
+
+.btn-primary {
+    background-color: #2980b9;
+    border-color: #2472a4;
+    color: #fff;
+}
+
+.view-hide {
+    float: right;
+    font-size: 8px;
+    margin-right: 10px;
+    cursor: pointer;
+    color: #333;
+    width: 20%;
+    text-align: right;
+}
+
+    .view-hide:hover {
+        color: #f39c12;
+    }
+
+.btn:hover {
+    background-color: #20638F;
+}
+
+
+.search_Image {
+    height: 24px;
+    width: 24px;
+    float: inherit;
+    margin-top: 2px;
+    margin-left: 5px;
+}
+
+/* -----------CSS for Popup-----------------*/
+.modal-content {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    outline: 0 none;
+    position: relative;
+}
+
+.modal-header {
+    border-bottom: 1px solid #e5e5e5;
+    min-height: 16.4286px;
+    padding: 15px;
+}
+
+.modal-body {
+    padding: 15px;
+    position: relative;
+    overflow: auto;
+}
+
+.modal-footer {
+    border-top: 1px solid #e5e5e5;
+    padding-top: 15px;
+}
+
+.ui-front {
+    z-index: 100;
+}
+
+.well {
+    background-color: #FFFFFF;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    margin-bottom: 20px;
+    min-height: 20px;
+    padding: 19px;
+}
+
+.close {
+    color: #000;
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    opacity: 0.2;
+    text-shadow: 0 1px 0 #fff;
+    cursor: default;
+}
+
+h3, h4 {
+    font-weight: bold;
+}
+
+h4, .h4 {
+    font-size: 18px;
+}
+
+.modal-title {
+    line-height: 1.42857;
+    margin: 0;
+}
+
+.modal-dialog {
+    margin: 30px auto;
+    width: 600px;
+}
+
+#slide_background {
+    -webkit-transition: all 0.3s 0.3s;
+    -moz-transition: all 0.3s 0.3s;
+    transition: all 0.3s 0.3s;
+}
+
+/*------------------CSS For UHID Search----------------*/
+#slide1,
+#slide_wrapper {
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+#slide1 {
+    -webkit-transform: translateX(0) translateY(-40%);
+    -moz-transform: translateX(0) translateY(-40%);
+    -ms-transform: translateX(0) translateY(-40%);
+    transform: translateX(0) translateY(-40%);
+}
+
+.popup_visible #slide1 {
+    -webkit-transform: translateX(0) translateY(0);
+    -moz-transform: translateX(0) translateY(0);
+    -ms-transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0);
+}
+
+/*------------------CSS for Referral Doc Search---------------*/
+#slide2,
+#slide_wrapper {
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+#slide2 {
+    -webkit-transform: translateX(0) translateY(-40%);
+    -moz-transform: translateX(0) translateY(-40%);
+    -ms-transform: translateX(0) translateY(-40%);
+    transform: translateX(0) translateY(-40%);
+}
+
+.popup_visible #slide2 {
+    -webkit-transform: translateX(0) translateY(0);
+    -moz-transform: translateX(0) translateY(0);
+    -ms-transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0);
+}
+
+/*------------------CSS for Referral Doc Search---------------*/
+#slide3,
+#slide_wrapper {
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+#slide3 {
+    -webkit-transform: translateX(0) translateY(-40%);
+    -moz-transform: translateX(0) translateY(-40%);
+    -ms-transform: translateX(0) translateY(-40%);
+    transform: translateX(0) translateY(-40%);
+}
+
+.popup_visible #slide3 {
+    -webkit-transform: translateX(0) translateY(0);
+    -moz-transform: translateX(0) translateY(0);
+    -ms-transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0);
+}
+
+/*------------------CSS for Credit Patient---------------*/
+#slide4,
+#slide_wrapper {
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+#slide4 {
+    -webkit-transform: translateX(0) translateY(-40%);
+    -moz-transform: translateX(0) translateY(-40%);
+    -ms-transform: translateX(0) translateY(-40%);
+    transform: translateX(0) translateY(-40%);
+}
+
+.popup_visible #slide4 {
+    -webkit-transform: translateX(0) translateY(0);
+    -moz-transform: translateX(0) translateY(0);
+    -ms-transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0);
+}
+
+
+/*------------------CSS for Grid View Search---------------*/
+.grid_row {
+    padding-left: 10px;
+    cursor: pointer;
+   overflow:auto;
+}
+
+.row2 {
+
+    }
+
+.grid_odd_row {
+    background: none repeat scroll 0 0 #fafafa;
+}
+
+.grid_even_row {
+    background: none repeat scroll 0 0 white;
+}
+
+.grid_property {
+    font-size: 11px;
+    height: 300px;
+    overflow: auto;
+text-align:left;
+}
+
+.grid_row:hover {
+    color: #2980b9;
+    font-size: 11.50px;
+}
+
+#dvUHID {
+    height: 20px;
+}
+
+#dvPatientName {
+    height: 15px;
+    font-weight:bold;
+}
+
+#dvPatientGender {
+    height: 15px;
+}
+
+#dvPatientAge {
+    height: 15px;
+}
+
+#dv_PatientType {
+    height: 15px;
+}
+
+
+/*-Start----------------------- CSS For Popup Form Layout--------------*/
+.popup-form-layout {
+    width: 96%;
+    overflow: auto;
+    height: auto;
+    overflow-y: inherit;
+}
+
+.popup-grid-layout {
+    border: 1px solid #c7c7c7;
+    border-radius: 4px;
+    width:100%;
+}
+
+.popup-form-column-big {
+    width: 96%;
+}
+
+.popup-form-column-small {
+    width: 46%;
+    float: left;
+}
+
+.popup-form-control-textarea {
+    float: left;
+    text-align: left;
+    width: 72%;
+    height: 100%;
+}
+
+.popup-form-control-text {
+    float: left;
+    text-align: left;
+    width: 100%;
+    height: 100%;
+}
+
+.popup-form-control-text-big {
+    float: left;
+    text-align: left;
+    width: 60%;
+}
+
+.popup-label-text {
+    text-align: right;
+    line-height: 24px;
+    font-weight: normal;
+    font-size: 10px;
+    color: #333333;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.popup-button-margin {
+    margin-left: 29px;
+}
+
+.PLW1 {
+    width: 44%;
+}
+
+.PLW2 {
+    width: 21%;
+}
+
+.PLW3 {
+    width: 15%;
+}
+
+#dgvHPopupPatientDetail {
+    font-weight: bold;
+    font-size: 11px;
+}
+
+#dgvRPopupPatientDetail {
+    font-size: 11px;
+    text-align: left;
+    font-weight: normal;
+    max-height:190px;
+    overflow:auto;
+}
+
+.pprow-header {
+    border-bottom: 1px solid #c7c7c7;
+    background-color: #fcf8e3;
+    color: #f39c12;
+    height: 100%;
+    line-height: 20px;
+    overflow: auto;
+    text-align: left;
+}
+
+
+.ppCL1 {
+    padding-left:1%;
+    width: 20%;
+    float: left;
+  text-align:left;
+}
+
+.ppCL2 {
+    width: 25%;
+    float: left;
+    min-width: 25%;
+  text-align:left;
+ 
+}
+
+.ppCL3 {
+    width: 18%;
+    float: left;
+    min-width: 18%;
+   text-align:left;
+}
+
+.ppCL4 {
+    width: 15%;
+    float: left;
+    min-width: 15%;
+   text-align:left;
+}
+
+.ppCL5 {
+    width: 21%;
+    min-width: 21%;
+    float: left;
+  text-align:left;
+}
+
+.ppHCL1 {
+    padding-left:1%;
+    width: 19%;
+    float: left;
+  text-align:left;
+}
+
+.ppHCL2 {
+    width: 24%;
+    float: left;
+    min-width: 24%;
+  text-align:left;
+ 
+}
+
+.ppHCL3 {
+    width: 18%;
+    float: left;
+    min-width: 18%;
+   text-align:left;
+}
+
+.ppHCL4 {
+    width: 14%;
+    float: left;
+    min-width: 14%;
+   text-align:left;
+}
+
+.ppHCL5 {
+    width: 21%;
+    min-width: 21%;
+    float: left;
+  text-align:left;
+}
+
+
+.grid_row1 {
+    cursor: pointer;
+}
+
+    .grid_row1:hover {
+        color: #2980b9;
+        font-size: 11.50px;
+    }
+/*------------------------ CSS For Popup Form Layout-------------End-*/

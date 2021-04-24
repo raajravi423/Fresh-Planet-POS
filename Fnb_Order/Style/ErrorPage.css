@@ -1,0 +1,58 @@
+﻿#dvErrorPage {
+    border: 1px solid #c7c7c7;
+    border-radius: 4px;
+    box-shadow: 2px 2px 7px #ccc;
+    margin-top: 15px;
+    min-height: 450px;
+    overflow: auto;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+#dvErrNo {
+    font-family: Chiller;
+    font-size: 50px;
+    text-align:center;
+    color:palevioletred;
+    height:50px;
+
+}
+
+#Error-text {
+    font-family: 'Comic Sans MS';
+    font-size: 20px;
+    text-align:center;
+    color:indigo;
+
+}
+.sub-section {
+    float:left;width:42%;
+}
+
+
+
+.btnReLogin {
+    background: none repeat scroll 0 0 #e3e3e3;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 2px #fff inset;
+    color: #333;
+    cursor: pointer;
+    float: right;
+    font-family: "Trebuchet MS","Myriad Pro",sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 80px 20px 10px 10px;
+    padding: 8px 0 9px;
+    text-align: center;
+    text-shadow: 0 1px 0 #fff;
+    width: 300px;
+}
+
+  .btnReLogin:hover {
+        background: #d9d9d9;
+        -moz-box-shadow: 0px 0px 2px #eaeaea inset;
+        -webkit-box-shadow: 0px 0px 2px #eaeaea inset;
+        box-shadow: 0px 0px 2px #eaeaea inset;
+        color: #222;
+    }
