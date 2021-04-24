@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Create Order" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="CreateOrder.aspx.cs" Inherits="Fnb_Order.Admin.CreateOrder" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-<%--    <style type="text/css" >
+    <style type="text/css" >
         .main-content {
     border: 1px solid #c7c7c7;
     border-radius: 4px;
@@ -99,10 +99,13 @@
                 }); 
         });
         
-    </script> --%>
+    </script> 
     <style type="text/css">
-        .auto-style1 {
+        .tbl-default{
             width: 100%;
+        }
+        .td-default {
+          float:right
         }
     </style>
 </asp:Content>
@@ -113,20 +116,57 @@
         </div>
         <div class="main-body-content">
 
-            <table class="auto-style1">
+            <table class="tbl-default">
                 <tr>
                     <td style="width:50%;">
-                        <table style="width:50%;">
+                        <table class="tbl-default">
                             <tr>
-                                <td></td>
-                                <td></td>
+                                <td>
+                                    <asp:RadioButtonList ID="rdoCustomerType" TextAlign="left" runat="server">
+                                        <asp:ListItem Text="GF-FP" Value="GF-FP" Selected="True"></asp:ListItem>
+                                    </asp:RadioButtonList>
+                                </td>
+                                <th>Order Date:</th>
+                                <td><asp:TextBox ID="txtDate" runat="server" CssClass="datepicker input-with-feedback form-control" ></asp:TextBox></td>
+                            </tr>
+                            <tr>
+                                <th>Customer ID:</th>
+                                <td colspan="2"><asp:TextBox ID="txtCustomerID" runat="server" CssClass="input-with-feedback form-control" ></asp:TextBox></td>
+                                <td><asp:Button ID="btnSearchCustomer" runat="server" CssClass="btn btn-primary" Text="Search" /></td>
+                                </tr>
+                            <tr>
+                                <th>Select Item:</th>
+                                <td colspan="3"><asp:TextBox ID="txtSelectItem" runat="server" CssClass="input-with-feedback form-control" ></asp:TextBox></td>
                             </tr>
                         </table>
 
 
                     </td>
                     <td style="width:50%;">
-                        
+                         <table class="tbl-default">
+                            <tr>
+                                <th>Customer ID:</th>
+                                <td><asp:Label ID="lblCustomerID" Text="GF-FP-03" runat="server"></asp:Label></td>
+                                <th>Order Date:</th>
+                                <td><asp:Label ID="lblOrderDate" runat="server" Text="24-04-2021"></asp:Label></td>
+                                </tr>
+                             <tr>
+                                 <th>Customer Name:</th>
+                                 <td><asp:Label ID="lblCustomerName" Text="Bala Ji Store" runat="server"></asp:Label></td>
+                                 <th>Contact No:</th>
+                                 <td><asp:Label ID="lblContactNo" runat="server" Text="987654321"></asp:Label></td>
+                                 </tr>
+                                 <tr>
+                                 <th>Address:</th>
+                                 <td colspan="3"><asp:Label ID="lblAddress" Text="SG-116, RPS Galleria, RPS Sector-88 Faridabad." runat="server"></asp:Label></td>
+                                 </tr>
+                                 <tr>
+                                 <td colspan="4">
+                                 <asp:GridView ID="gvOrderItem" runat="server" ></asp:GridView>
+                                 </td>
+                             </tr>
+                             </table>
+
 
                     </td>
                 </tr>
