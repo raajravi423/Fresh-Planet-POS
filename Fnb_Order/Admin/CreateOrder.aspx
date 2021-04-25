@@ -123,7 +123,7 @@
                             <tr>
                                 <td>
                                     <asp:RadioButtonList ID="rdoCustomerType" TextAlign="left" runat="server">
-                                        <asp:ListItem Text="GF-FP" Value="GF-FP" Selected="True"></asp:ListItem>
+                                        <asp:ListItem Text="FP-GF" Value="FP-GF" Selected="True"></asp:ListItem>
                                     </asp:RadioButtonList>
                                 </td>
                                 <th>Order Date:</th>
@@ -132,7 +132,7 @@
                             <tr>
                                 <th>Customer ID:</th>
                                 <td colspan="2"><asp:TextBox ID="txtCustomerID" runat="server" CssClass="input-with-feedback form-control" ></asp:TextBox></td>
-                                <td><asp:Button ID="btnSearchCustomer" runat="server" CssClass="btn btn-primary" Text="Search" /></td>
+                                <td><asp:Button ID="btnSearchCustomer" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnSearchCustomer_Click1" /></td>
                                 </tr>
                             <tr>
                                 <th>Select Item:</th>
