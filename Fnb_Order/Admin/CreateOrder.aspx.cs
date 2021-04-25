@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -18,9 +20,7 @@ namespace Fnb_Order.Admin
             {
                 txtDate.Text = currentDate;
             }
-        }
-
-       
+        }      
 
         protected void btnSearchCustomer_Click1(object sender, EventArgs e)
             {
@@ -44,6 +44,44 @@ namespace Fnb_Order.Admin
                 lblAddress.Text = DatasetcustomerDetails.Rows[0]["Address"].ToString();
             }
 
+        }
+
+        [WebMethod]
+        public static List<VegetablesItems> getItems(string Itemname)
+        {
+            List<VegetablesItems> vegetablesItemsobj = new List<VegetablesItems>();
+          //  string cs = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            try
+            { 
+                DataSet DatasetcustomerDetails = new DataSet();
+                VegetablesItems Vegetables = null;
+                SqlConnection oConn = new SqlConnection(GlobalPath.ConnectionString);
+                SqlCommand oComm = new SqlCommand("usp_GetItemsWithKey1", oConn);
+                oComm.CommandType = CommandType.StoredProcedure;
+                oComm.Parameters.AddWithValue("@Key ", Itemname);                 
+                SqlDataAdapter da = new SqlDataAdapter(oComm);
+                oConn.Open();
+                da.Fill(DatasetcustomerDetails);
+                oConn.Close();
+                
+                if (DatasetcustomerDetails.Tables[0] != null)
+                {
+                    for (int i = 0; i < DatasetcustomerDetails.Tables[0].Rows.Count; i++)
+                    {
+                        Vegetables = new VegetablesItems();
+                        Vegetables.ItemsDbKey = Convert.ToInt32(DatasetcustomerDetails.Tables[0].Rows[i]["ID"]);
+                        Vegetables.ItemsName = Convert.ToString(DatasetcustomerDetails.Tables[0].Rows[i]["Item"]);
+                        Vegetables.ItemsCategory = Convert.ToString(DatasetcustomerDetails.Tables[0].Rows[i]["Category"]);
+                        vegetablesItemsobj.Add(Vegetables);
+                    }
+                } 
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error {0}", ex.Message);
+            }
+            return vegetablesItemsobj;
         }
     }
 }

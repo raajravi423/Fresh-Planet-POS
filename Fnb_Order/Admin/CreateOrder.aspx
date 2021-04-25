@@ -76,18 +76,25 @@
 
 
     </style>
-    <script type="text/javascript" >
+    
+   <%--  <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.8.0.js"></script>  
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.22/jquery-ui.js"></script>  --%>
+  <%--  <link rel="Stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/themes/redmond/jquery-ui.css" />--%>
+
+    <script type="text/javascript">
+
         $(document).ready(function () {
+            
            // BindModule();
-            $("#btnstart").on("click", function () {
-                var selval = $("#ddlfnbactivitylist").val();
-                if (selval != '0') {
-                    window.location = selval;
-                }
-                else {
-                    alert("Please Select Atleast One Activity.");
-                }
-            });
+            //$("#btnstart").on("click", function () {
+            //    var selval = $("#ddlfnbactivitylist").val();
+            //    if (selval != '0') {
+            //        window.location = selval;
+            //    }
+            //    else {
+            //        alert("Please Select Atleast One Activity.");
+            //    }
+            //});
 
             $('.datepicker').datepicker(
                 {
@@ -97,6 +104,39 @@
                     changeYear: true,
                     yearRange: '2020:2022'
                 }); 
+
+
+            $("#<%=txtSelectItem.ClientID%>").autocomplete({
+                
+                source: function (request, response) {
+                    
+                    var param = { Itemname: $('#<%=txtSelectItem.ClientID%>').val() };
+                     
+                    $.ajax({
+                        url: "CreateOrder.aspx/getItems",
+                        data: JSON.stringify(param),
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        dataFilter: function (data) { return data; },
+                        success: function (data) {
+                            console.log(JSON.stringify(data));
+                            response($.map(data.d, function (item) {
+                                // console.log({  Name: item.EmpName });
+                                return {
+                                    value: item.ItemsName + " (" + item.ItemsCategory + ")"
+                                }
+                            }))
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            var err = eval("(" + XMLHttpRequest.responseText + ")");
+                            alert(err.Message)
+                            // console.log("Ajax Error!");  
+                        }
+                    });
+                },
+                minLength: 2 //This is the Char length of inputTextBox  
+            });
         });
         
     </script> 
@@ -136,7 +176,7 @@
                                 </tr>
                             <tr>
                                 <th>Select Item:</th>
-                                <td colspan="3"><asp:TextBox ID="txtSelectItem" runat="server" CssClass="input-with-feedback form-control" ></asp:TextBox></td>
+                                <td colspan="3"><asp:TextBox ID="txtSelectItem" runat="server"  ></asp:TextBox></td>
                             </tr>
                         </table>
 
