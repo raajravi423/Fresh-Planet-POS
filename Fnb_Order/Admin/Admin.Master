@@ -1111,7 +1111,10 @@ h1 {
                             <img src="../Images/add.png" class="menu-pic" /><span style="float: left">Create Order</span> </a></li>
                         <li><a href="#">
                             <img src="../Images/dashnboard.png" class="menu-pic" /><span style="float: left">Edit/View Order</span> </a></li>
-                    </ul>
+                    <li><a href="AddItem.aspx">
+                            <img src="../Images/dashnboard.png" class="menu-pic" /><span style="float: left">Add Item</span> </a></li>
+                
+                        </ul>
                 </li>
                 
                 <li>Ratelist
