@@ -15,6 +15,15 @@ namespace Fnb_Order.Admin
     {
 
         /// <summary>
+        /// lblmsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblmsg;
+
+        /// <summary>
         /// ddlCategory control.
         /// </summary>
         /// <remarks>
@@ -94,6 +103,15 @@ namespace Fnb_Order.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMarg50Kg;
+
+        /// <summary>
+        /// chlregular control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chlregular;
 
         /// <summary>
         /// btnSaveItem control.
