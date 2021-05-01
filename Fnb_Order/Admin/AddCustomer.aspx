@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Add Item" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="AddItem.aspx.cs" Inherits="Fnb_Order.Admin.AddItem" %>
+﻿<%@ Page Title="Add Customer" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="AddCustomer.aspx.cs" Inherits="Fnb_Order.Admin.AddCustomer" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css" >
         .main-content {
@@ -115,7 +115,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
        <div id="dvITTransaction" class="main-content">
         <div class="row dv-header">
-            <div class="main-header-text">Add Item</div>
+            <div class="main-header-text">Add Customer</div>
         </div>
         <div class="main-body-content">
 <center>
@@ -123,85 +123,88 @@
             <table class="tbl-default">
                 <tr>
                     <th class="td1">
-                    Category:
+                    Customer Type:
                     </th>
                     <td class="td2">
-                    <asp:DropDownList ID="ddlCategory" runat="server" CssClass="input-with-feedback form-control" TabIndex="0" ValidationGroup="Item" >
+                    <asp:DropDownList ID="ddlCustomerType" runat="server" CssClass="input-with-feedback form-control" TabIndex="0" ValidationGroup="Item" >
                         <asp:ListItem Text="Select" Selected="True" Value="0"></asp:ListItem>
-                        <asp:ListItem Text="Vegetable" Value="Vegetable"></asp:ListItem>
-                        <asp:ListItem Text="Fruit" Value="Fruit"></asp:ListItem>
+                        <asp:ListItem Text="B2B" Value="B2B"></asp:ListItem>
+                        <asp:ListItem Text="B2C" Value="B2C"></asp:ListItem>
                     </asp:DropDownList>
-                        <asp:RequiredFieldValidator ID="rfvcategory" runat="server" ControlToValidate="ddlCategory" InitialValue="0" ErrorMessage="*" CssClass="validation-msg" ValidationGroup="Item"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvcategory" runat="server" ControlToValidate="ddlCustomerType" InitialValue="0" ErrorMessage="*" CssClass="validation-msg" ValidationGroup="Item"></asp:RequiredFieldValidator>
                     </td>
                    </tr>
                    <tr>
                     <th class="td1">
-                    Item Name:
+                    Customer Name:
                     </th>
                     <td class="td2">
-                    <asp:TextBox ID="txtItemName" runat="server" placeholder="Item Name" CssClass="input-with-feedback form-control" TabIndex="1" ValidationGroup="Item" ></asp:TextBox>                        
-                    <asp:RequiredFieldValidator ID="rfvitemName" runat="server" ControlToValidate="txtItemName"  ErrorMessage="*" ValidationGroup="Item" CssClass="validation-msg"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="txtCustomerName" runat="server" placeholder="Customer Name" CssClass="input-with-feedback form-control" TabIndex="1" ValidationGroup="Item" ></asp:TextBox>                        
+                    <asp:RequiredFieldValidator ID="rfvitemName" runat="server" ControlToValidate="txtCustomerName"  ErrorMessage="*" ValidationGroup="Item" CssClass="validation-msg"></asp:RequiredFieldValidator>
                     </td>
                     </tr>
                     <tr>
                     <th class="td1">
-                    Description:
+                    Contact Person:
                     </th>
                     <td class="td2">
-                    <asp:TextBox ID="txtDescription" runat="server"  TextMode="MultiLine" CssClass="input-with-feedback form-control" TabIndex="2" ValidationGroup="Item" ></asp:TextBox>                                            
+                    <asp:TextBox ID="txtContactPerson" runat="server" placeholder="Contact Person"  CssClass="input-with-feedback form-control" TabIndex="2" ValidationGroup="Item" ></asp:TextBox>                                            
                     </td>
                 </tr>
                 <tr>
                 <th class="td1">
-                    Margin 1 Kg.:
+                    Mobile Number:
                     </th>
                     <td class="td2">
-                    <asp:TextBox ID="txtMarg1Kg" runat="server" Text="5" CssClass="input-with-feedback form-control" TabIndex="3" ValidationGroup="Item"></asp:TextBox>                        
-                    <asp:RangeValidator runat="server" Type="Integer" MinimumValue="0" MaximumValue="50" ControlToValidate="txtMarg1Kg"  ErrorMessage="**" CssClass="validation-msg" ValidationGroup="Item" />
+                    <asp:TextBox ID="txtMobile" runat="server" Text="5" placeholder="Mobile Number" CssClass="input-with-feedback form-control" TabIndex="3" ValidationGroup="Item"></asp:TextBox>                        
                     </td>
                  </tr>
                 <tr>
                 <th class="td1">
-                    Margin 5 Kg.:
+                    Address:
                     </th>
                     <td class="td2">
-                    <asp:TextBox ID="txtMarg5Kg" runat="server" Text="4" CssClass="input-with-feedback form-control" TabIndex="4" ValidationGroup="Item" ></asp:TextBox>                        
-                    <asp:RangeValidator runat="server" Type="Integer" MinimumValue="0" MaximumValue="50" ControlToValidate="txtMarg5Kg"  ErrorMessage="**" CssClass="validation-msg" ValidationGroup="Item" />
+                    <asp:TextBox ID="txtMarg5Kg" runat="server" Text="4" TextMode="MultiLine" CssClass="input-with-feedback form-control" TabIndex="4" ValidationGroup="Item" ></asp:TextBox>                        
 
                     </td>
                  </tr>
                 <tr>
                 <th class="td1">
-                    Margin 25 Kg.:
+                    Address Landmark:
                     </th>
                     <td class="td2">
-                    <asp:TextBox ID="txtMarg25Kg" runat="server" Text="3" CssClass="input-with-feedback form-control" TabIndex="5"  ValidationGroup="Item"></asp:TextBox>                        
-                    <asp:RangeValidator runat="server" Type="Integer" MinimumValue="0" MaximumValue="50" ControlToValidate="txtMarg25Kg"  ErrorMessage="**" CssClass="validation-msg" ValidationGroup="Item" />
+                    <asp:TextBox ID="txtMarg25Kg" runat="server" Text="3" placeholder="Address Landmark" CssClass="input-with-feedback form-control" TabIndex="5"  ValidationGroup="Item"></asp:TextBox>                        
 
                     </td>
                  </tr>
                 <tr>
                 <th class="td1">
-                    Margin 50 Kg.:
+                    Area:
                     </th>
                     <td class="td2">
-                    <asp:TextBox ID="txtMarg50Kg" runat="server" Text="2" CssClass="input-with-feedback form-control" TabIndex="6" ValidationGroup="Item" ></asp:TextBox>                        
-                    <asp:RangeValidator runat="server" Type="Integer" MinimumValue="0" MaximumValue="50" ControlToValidate="txtMarg50Kg"  ErrorMessage="**" CssClass="validation-msg" ValidationGroup="Item" />
-
+                    <asp:TextBox ID="txtMarg50Kg" runat="server" Text="2" placeholder="Area" CssClass="input-with-feedback form-control" TabIndex="6" ValidationGroup="Item" ></asp:TextBox>                        
+     
                     </td>
                  </tr>
-                 <th class="td1">
-                    
+                <tr>
+                <th class="td1">
+                    Location Lat:
                     </th>
                     <td class="td2">
-                    <asp:CheckBox ID="chlregular" runat="server" Text="Is this in Regular Category.?" TextAlign="Right"  />
-                     </td>
+                    <asp:TextBox ID="txtLocationLat" runat="server" Text="2" placeholder="Location Lat" CssClass="input-with-feedback form-control" TabIndex="6" ValidationGroup="Item" ></asp:TextBox>                        
+                    </td>
                  </tr>
                 <tr>
-                <td colspan="2" > <center><asp:Button ID="btnSaveItem" runat="server" CssClass="btn btn-primary" Text="Save Item" TabIndex="7" ValidationGroup="Item" OnClick="btnSaveItem_Click" /></center> </td>
+                <th class="td1">
+                    Location Long:
+                    </th>
+                    <td class="td2">
+                    <asp:TextBox ID="txtLocationLong" runat="server" Text="2" placeholder="Location Long" CssClass="input-with-feedback form-control" TabIndex="7" ValidationGroup="Item" ></asp:TextBox>                        
+                    </td>
+                 </tr>
+                <tr>
+                <td colspan="2" > <center><asp:Button ID="btnSaveItem" runat="server" CssClass="btn btn-primary" Text="Save Item" TabIndex="8" ValidationGroup="Item"  /></center> </td>
                 </tr>
-
-
             </table>
     </center>
     </div>
