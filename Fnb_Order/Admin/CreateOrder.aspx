@@ -124,7 +124,7 @@
                             response($.map(data.d, function (item) {
                                 // console.log({  Name: item.EmpName });
                                 return {
-                                    value: item.ItemsName + " (" + item.ItemsCategory + ")"
+                                    value: item.ItemsName
                                 }
                             }))
                         },
@@ -135,8 +135,13 @@
                         }
                     });
                 },
+                select: function (event, ui) {
+                    
+                    $('#<%=lblVegItems.ClientID%>').text(ui.item.value)
+                 
+                },
                 minLength: 2 //This is the Char length of inputTextBox  
-            });
+            });  //
         });
         
     </script> 
@@ -178,6 +183,22 @@
                                 <th>Select Item:</th>
                                 <td colspan="3"><asp:TextBox ID="txtSelectItem" runat="server"  ></asp:TextBox></td>
                             </tr>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <td colspan="3">
+
+
+                                    <asp:Label ID="lblVegItems" runat="server" Visible="true" Text=""></asp:Label>
+                                    <asp:Label ID="Label1" runat="server" Visible="true" Text="X"></asp:Label>
+
+                                    <asp:TextBox ID="txtQuantity" runat="server"></asp:TextBox>
+                                    <asp:Label ID="Label2" runat="server" Visible="true" Text="KG"></asp:Label>
+                                    <asp:Button ID="BtnAddQuantity" runat="server" Text="Add" OnClick="BtnAddQuantity_Click" />
+                                        
+                                </td>
+                            </tr>
+                            
+
                         </table>
 
 
@@ -200,10 +221,49 @@
                                  <th>Address:</th>
                                  <td colspan="3"><asp:Label ID="lblAddress" Text="SG-116, RPS Galleria, RPS Sector-88 Faridabad." runat="server"></asp:Label></td>
                                  </tr>
+
+                             <tr>
+                                 <td colspan="4">
+                                     <asp:Button ID="BtnCreateOrder" runat="server" CssClass="btn btn-primary" Text="Create Order" OnClick="BtnCreateOrder_Click" />
+                                 </td>
+                             </tr>
+
                                  <tr>
                                  <td colspan="4">
-                                 <asp:GridView ID="gvOrderItem" runat="server" ></asp:GridView>
+                                 <asp:GridView ID="gvOrderItem" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None"  
+                                      DataKeyNames ="ItemID" OnRowEditing ="Edit" AutoGenerateColumns="false"                
+                                     OnRowCancelingEdit="canceledit" OnRowDeleting="delete" OnRowUpdating="Update">
+                                     <AlternatingRowStyle BackColor="White" />
+                                     <Columns>
+                                        <asp:CommandField ShowEditButton="True" />
+                                        <asp:CommandField ShowDeleteButton="True" />
+                                          <asp:boundfield datafield="SERIAL" readonly="true" headertext="SERIAL"/>
+                                      <asp:boundfield datafield="ItemID" readonly="true" headertext="ItemID"/>
+                                      <asp:boundfield datafield="ItemName" readonly="true"  headertext="ItemName"/>
+                                      <asp:boundfield datafield="Qty" headertext="Qty"/>
+                                      <asp:boundfield datafield="RateSlab" readonly="true"  headertext="RateSlab"/>
+                                         <asp:boundfield datafield="Rate" readonly="true"  headertext="Rate"/>
+                                         <asp:boundfield datafield="TotalAmount" readonly="true"  headertext="TotalAmount"/>
+                                    </Columns>
+
+                                     <EditRowStyle BackColor="#2461BF" />
+                                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                     <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                     <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                     <RowStyle BackColor="#EFF3FB" />
+                                     <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                     <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                     <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                     <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                     </asp:GridView>
                                  </td>
+                             </tr>
+
+                             <tr>
+                                 <td colspan="4">
+                                  </td>
+
                              </tr>
                              </table>
 
@@ -213,5 +273,6 @@
             </table>
 
     </div>
+       </div>
        </div>
 </asp:Content>
