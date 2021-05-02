@@ -78,31 +78,40 @@ namespace Fnb_Order.Admin
         protected global::System.Web.UI.WebControls.TextBox txtMobile;
 
         /// <summary>
-        /// txtMarg5Kg control.
+        /// rfvmobile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMarg5Kg;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rfvmobile;
 
         /// <summary>
-        /// txtMarg25Kg control.
+        /// txtAdddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMarg25Kg;
+        protected global::System.Web.UI.WebControls.TextBox txtAdddress;
 
         /// <summary>
-        /// txtMarg50Kg control.
+        /// txtAddressLandmark control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMarg50Kg;
+        protected global::System.Web.UI.WebControls.TextBox txtAddressLandmark;
+
+        /// <summary>
+        /// txtArea control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtArea;
 
         /// <summary>
         /// txtLocationLat control.

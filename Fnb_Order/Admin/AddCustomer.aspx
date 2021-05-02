@@ -156,7 +156,8 @@
                     Mobile Number:
                     </th>
                     <td class="td2">
-                    <asp:TextBox ID="txtMobile" runat="server" Text="5" placeholder="Mobile Number" CssClass="input-with-feedback form-control" TabIndex="3" ValidationGroup="Item"></asp:TextBox>                        
+                    <asp:TextBox ID="txtMobile" runat="server" placeholder="Mobile Number" CssClass="input-with-feedback form-control" TabIndex="3" ValidationGroup="Item"></asp:TextBox>                        
+                    <asp:RegularExpressionValidator ID="rfvmobile" runat="server" ControlToValidate="txtMobile" ErrorMessage="*" ForeColor="Red" ValidationExpression="[0-9]{10}" ValidationGroup="Item"></asp:RegularExpressionValidator>
                     </td>
                  </tr>
                 <tr>
@@ -164,8 +165,7 @@
                     Address:
                     </th>
                     <td class="td2">
-                    <asp:TextBox ID="txtMarg5Kg" runat="server" Text="4" TextMode="MultiLine" CssClass="input-with-feedback form-control" TabIndex="4" ValidationGroup="Item" ></asp:TextBox>                        
-
+                    <asp:TextBox ID="txtAdddress" runat="server" TextMode="MultiLine" CssClass="input-with-feedback form-control" TabIndex="4" ValidationGroup="Item" ></asp:TextBox>                        
                     </td>
                  </tr>
                 <tr>
@@ -173,8 +173,7 @@
                     Address Landmark:
                     </th>
                     <td class="td2">
-                    <asp:TextBox ID="txtMarg25Kg" runat="server" Text="3" placeholder="Address Landmark" CssClass="input-with-feedback form-control" TabIndex="5"  ValidationGroup="Item"></asp:TextBox>                        
-
+                    <asp:TextBox ID="txtAddressLandmark" runat="server" placeholder="Address Landmark" CssClass="input-with-feedback form-control" TabIndex="5"  ValidationGroup="Item"></asp:TextBox>                        
                     </td>
                  </tr>
                 <tr>
@@ -182,8 +181,7 @@
                     Area:
                     </th>
                     <td class="td2">
-                    <asp:TextBox ID="txtMarg50Kg" runat="server" Text="2" placeholder="Area" CssClass="input-with-feedback form-control" TabIndex="6" ValidationGroup="Item" ></asp:TextBox>                        
-     
+                    <asp:TextBox ID="txtArea" runat="server" placeholder="Area" CssClass="input-with-feedback form-control" TabIndex="6" ValidationGroup="Item" ></asp:TextBox>                             
                     </td>
                  </tr>
                 <tr>
@@ -191,7 +189,7 @@
                     Location Lat:
                     </th>
                     <td class="td2">
-                    <asp:TextBox ID="txtLocationLat" runat="server" Text="2" placeholder="Location Lat" CssClass="input-with-feedback form-control" TabIndex="6" ValidationGroup="Item" ></asp:TextBox>                        
+                    <asp:TextBox ID="txtLocationLat" runat="server" placeholder="Location Lat" CssClass="input-with-feedback form-control" TabIndex="6" ValidationGroup="Item" ></asp:TextBox>                        
                     </td>
                  </tr>
                 <tr>
@@ -199,11 +197,11 @@
                     Location Long:
                     </th>
                     <td class="td2">
-                    <asp:TextBox ID="txtLocationLong" runat="server" Text="2" placeholder="Location Long" CssClass="input-with-feedback form-control" TabIndex="7" ValidationGroup="Item" ></asp:TextBox>                        
+                    <asp:TextBox ID="txtLocationLong" runat="server"  placeholder="Location Long" CssClass="input-with-feedback form-control" TabIndex="7" ValidationGroup="Item" ></asp:TextBox>                        
                     </td>
                  </tr>
                 <tr>
-                <td colspan="2" > <center><asp:Button ID="btnSaveItem" runat="server" CssClass="btn btn-primary" Text="Save Item" TabIndex="8" ValidationGroup="Item"  /></center> </td>
+                <td colspan="2"><center><asp:Button ID="btnSaveItem" runat="server" CssClass="btn btn-primary" OnClick="btnSaveItem_Click" Text="Save Item" TabIndex="8" ValidationGroup="Item"  /></center> </td>
                 </tr>
             </table>
     </center>
