@@ -123,8 +123,14 @@
                             console.log(JSON.stringify(data));
                             response($.map(data.d, function (item) {
                                 // console.log({  Name: item.EmpName });
+
+                              <%--  this.alert(item.ItemsDbKey);
+                                $('#<%=lblItemID.ClientID%>').val(item.split('-')[1])  --%>
                                 return {
-                                    value: item.ItemsName
+                                    label: item.split('-')[1],
+                                    value: item.split('-')[1],
+                                    data: item.split('-')[0]
+                                    //value: item.ItemsName
                                 }
                             }))
                         },
@@ -137,7 +143,8 @@
                 },
                 select: function (event, ui) {
                     
-                    $('#<%=lblVegItems.ClientID%>').text(ui.item.value)
+                    $('#<%=lblVegItems.ClientID%>').text(ui.item.value);
+                    $('#<%=hdnItemID.ClientID%>').attr('value',ui.item.data); 
                  
                 },
                 minLength: 2 //This is the Char length of inputTextBox  
@@ -168,7 +175,7 @@
                             <tr>
                                 <td>
                                     <asp:RadioButtonList ID="rdoCustomerType" TextAlign="left" runat="server">
-                                        <asp:ListItem Text="FP-GF" Value="FP-GF" Selected="True"></asp:ListItem>
+                                        <asp:ListItem Text="FPBGF" Value="FPBGF" Selected="True"></asp:ListItem>
                                     </asp:RadioButtonList>
                                 </td>
                                 <th>Order Date:</th>
@@ -187,18 +194,23 @@
                                 <th>&nbsp;</th>
                                 <td colspan="3">
 
-
                                     <asp:Label ID="lblVegItems" runat="server" Visible="true" Text=""></asp:Label>
                                     <asp:Label ID="Label1" runat="server" Visible="true" Text="X"></asp:Label>
 
                                     <asp:TextBox ID="txtQuantity" runat="server"></asp:TextBox>
                                     <asp:Label ID="Label2" runat="server" Visible="true" Text="KG"></asp:Label>
                                     <asp:Button ID="BtnAddQuantity" runat="server" Text="Add" OnClick="BtnAddQuantity_Click" />
-                                        
+                                      <%--  <asp:Label ID="lblItemID" runat="server" Visible="true" Text="9"></asp:Label>--%>
+                                   
+
                                 </td>
                             </tr>
                             
-
+                            <tr>
+                                <td>
+                                  <asp:HiddenField ID="hdnItemID" runat="server" />
+                                </td>
+                            </tr>
                         </table>
 
 

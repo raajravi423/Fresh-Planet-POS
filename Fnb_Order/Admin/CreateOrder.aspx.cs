@@ -31,7 +31,9 @@ namespace Fnb_Order.Admin
             SqlConnection oConn = new SqlConnection(GlobalPath.ConnectionString);
             SqlCommand oComm = new SqlCommand("usp_GetCustomerByID", oConn);
             oComm.CommandType = CommandType.StoredProcedure;
-            oComm.Parameters.AddWithValue("@CustomerID ", txtCustomerID.Text.ToString());
+            string customerParameter = rdoCustomerType.Text.ToString();
+            string searchInput = rdoCustomerType.Text.ToString()+txtCustomerID.Text.ToString().PadLeft(2, '0');
+            oComm.Parameters.AddWithValue("@CustomerID ", searchInput);
             SqlDataAdapter da = new SqlDataAdapter(oComm);
             oConn.Open();
             da.Fill(DatasetcustomerDetails);
@@ -50,16 +52,18 @@ namespace Fnb_Order.Admin
         }
 
         [WebMethod]
-        public static List<VegetablesItems> getItems(string Itemname)
+        public static string[] getItems(string Itemname)
         {
             List<VegetablesItems> vegetablesItemsobj = new List<VegetablesItems>();
-          //  string cs = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+            List<string> customers = new List<string>();
+            //  string cs = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             try
             { 
                 DataSet DatasetcustomerDetails = new DataSet();
                 VegetablesItems Vegetables = null;
+              
                 SqlConnection oConn = new SqlConnection(GlobalPath.ConnectionString);
-                SqlCommand oComm = new SqlCommand("usp_GetItemsWithKey1", oConn);
+                SqlCommand oComm = new SqlCommand("usp_GetItemsWithKeyAndItemName", oConn);
                 oComm.CommandType = CommandType.StoredProcedure;
                 oComm.Parameters.AddWithValue("@Key ", Itemname);                 
                 SqlDataAdapter da = new SqlDataAdapter(oComm);
@@ -71,11 +75,12 @@ namespace Fnb_Order.Admin
                 {
                     for (int i = 0; i < DatasetcustomerDetails.Tables[0].Rows.Count; i++)
                     {
-                        Vegetables = new VegetablesItems();
-                      //  Vegetables.ItemsDbKey = Convert.ToInt32(DatasetcustomerDetails.Tables[0].Rows[i]["ID"]);
-                        Vegetables.ItemsName = Convert.ToString(DatasetcustomerDetails.Tables[0].Rows[i]["Item"]);
-                       // Vegetables.ItemsCategory = Convert.ToString(DatasetcustomerDetails.Tables[0].Rows[i]["Category"]);
-                        vegetablesItemsobj.Add(Vegetables);
+                        // Vegetables = new VegetablesItems();
+                        // Vegetables.ItemsDbKey = Convert.ToInt32(DatasetcustomerDetails.Tables[0].Rows[i]["ID"]);
+                        // Vegetables.ItemsName = Convert.ToString(DatasetcustomerDetails.Tables[0].Rows[i]["Item"]);
+                        //// Vegetables.ItemsCategory = Convert.ToString(DatasetcustomerDetails.Tables[0].Rows[i]["Category"]);
+                        // vegetablesItemsobj.Add(Vegetables);
+                        customers.Add(string.Format("{0}-{1}", Convert.ToInt32(DatasetcustomerDetails.Tables[0].Rows[i]["ID"]), Convert.ToString(DatasetcustomerDetails.Tables[0].Rows[i]["Item"])));
                     }
                 } 
 
@@ -84,7 +89,7 @@ namespace Fnb_Order.Admin
             {
                 Console.WriteLine("Error {0}", ex.Message);
             }
-            return vegetablesItemsobj;
+            return customers.ToArray();
         }
 
         protected void BtnAddQuantity_Click(object sender, EventArgs e)
@@ -141,7 +146,7 @@ namespace Fnb_Order.Admin
                         drCurrentRow = dt.NewRow();
                         //drCurrentRow["rowid"] = i + 1;
                         drCurrentRow["SERIAL"] = i + 1;
-                        drCurrentRow["ItemID"] = 2;
+                        drCurrentRow["ItemID"] = Convert.ToInt32(hdnItemID.Value);
                         drCurrentRow["ItemName"] = txtSelectItem.Text.ToString();
                         drCurrentRow["Qty"] = txtQuantity.Text.ToString();
                         drCurrentRow["RateSlab"] = 0.00;
@@ -168,7 +173,7 @@ namespace Fnb_Order.Admin
             DataTable dt = new DataTable();
           //  dt.Columns.Add("rowId", typeof(int));
             dt.Columns.Add(new DataColumn("SERIAL", Type.GetType("System.Int16")));
-            dt.Columns.Add(new DataColumn("ItemID", Type.GetType("System.Int16")));
+            dt.Columns.Add(new DataColumn("ItemID", Type.GetType("System.Int32")));
             dt.Columns.Add(new DataColumn("ItemName", Type.GetType("System.String")));
             dt.Columns.Add(new DataColumn("Qty", Type.GetType("System.Decimal")));
             dt.Columns.Add(new DataColumn("RateSlab", Type.GetType("System.Int16")));
@@ -273,7 +278,23 @@ namespace Fnb_Order.Admin
         }
 
         protected void delete(object sender, GridViewDeleteEventArgs e)
-        {
+        { 
+            string ItemID = gvOrderItem.Rows[1].Cells[3].Text;
+            DataTable dt = new DataTable();
+
+            dt = (DataTable)ViewState["Curtbl"];
+
+            DataRow dr = dt.Select("ItemID=" + ItemID).FirstOrDefault(); // finds all rows with id==2 and selects first or null if haven't found any
+            if (dr != null)
+            {
+
+                dr.Delete();
+            }
+            dt.AcceptChanges();
+            gvOrderItem.EditIndex = -1;
+            gvOrderItem.DataSource = dt;
+            gvOrderItem.DataBind();
+            gvOrderItem.Rows[0].Visible = false;
 
         }
 
@@ -285,6 +306,26 @@ namespace Fnb_Order.Admin
 
         protected void Update(object sender, GridViewUpdateEventArgs e)
         {
+            string UpdatedQty = Convert.ToString(e.NewValues["Qty"]);
+           // string ItemID = Convert.ToString(e.NewValues["ItemID"]);
+            string ItemID = gvOrderItem.Rows[1].Cells[3].Text;
+            DataTable dt = new DataTable();
+
+            dt = (DataTable)ViewState["Curtbl"];
+           
+            DataRow dr = dt.Select("ItemID="+ ItemID).FirstOrDefault(); // finds all rows with id==2 and selects first or null if haven't found any
+            if (dr != null)
+            {
+                
+                dr["Qty"] = UpdatedQty; //changes the quantity
+            }
+            dt.AcceptChanges();
+            gvOrderItem.EditIndex = -1;
+            gvOrderItem.DataSource = dt;
+            gvOrderItem.DataBind();
+            gvOrderItem.Rows[0].Visible = false;
+            
+            //UpdatingTextBox.Text = (String)e.NewValues["Field2"];
             //DataTable dt = new DataTable();
 
             //dt = (DataTable)ViewState["Curtbl"];
