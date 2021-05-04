@@ -9,7 +9,7 @@ namespace Fnb_Order.Admin
     [Serializable]
     public class VegetablesItems
     {
-     //   public int ItemsDbKey { get; set; }
+      public int ItemsDbKey { get; set; }
         public string ItemsName { get; set; }
        // public string ItemsCategory{ get; set; }
     }
