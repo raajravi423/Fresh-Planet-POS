@@ -74,7 +74,7 @@ namespace Fnb_Order.Admin
                     sqlConnection.Close();
                 }
             }
-        }
+        } 
 
         private void ClearControl()
         {
