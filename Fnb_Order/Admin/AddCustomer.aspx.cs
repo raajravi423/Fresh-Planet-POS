@@ -43,6 +43,7 @@ namespace Fnb_Order.Admin
             {
                 using (SqlCommand sqlCommand = new SqlCommand("usp_CRUDMasterCustomer"))
                 {
+
                     sqlCommand.CommandType = CommandType.StoredProcedure;
                     sqlCommand.Connection = sqlConnection;
                     sqlCommand.Parameters.AddWithValue("@CustomerType", strCustomerType);
