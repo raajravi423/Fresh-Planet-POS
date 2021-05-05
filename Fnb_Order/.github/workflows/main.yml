@@ -12,9 +12,8 @@ jobs:
       with:
          fetch-depth: 2
     - name: FTP-deploy-Action
-      uses: SamKirkland/FTP-Deploy-Action@3.1.1
+      uses:  raajravi423/FTP-Deploy-Action@3.1.1
       with:
         ftp-server: ftp://103.21.58.169
         ftp-username: sale
         ftp-password: ${{ secrets.ftp_password }}
-        protocol: ftps
