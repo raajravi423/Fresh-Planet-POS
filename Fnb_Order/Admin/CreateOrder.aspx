@@ -211,8 +211,16 @@ width:100%;
                             </tr>
                             <tr>
                                 <th>Customer ID:</th>
-                                <td><asp:TextBox ID="txtCustomerID" runat="server" placeholder="Customer ID Ex. 1,2.." CssClass="input-with-feedback form-control" TabIndex="2"></asp:TextBox></td>
-                                <td><asp:Button ID="btnSearchCustomer" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnSearchCustomer_Click1" TabIndex="3"/></td>
+
+                                <td colspan="2"><asp:TextBox ID="txtCustomerID" placeholder="Customer ID Ex. 1,2.."  runat="server" CssClass="input-with-feedback form-control"  TabIndex="2"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="CustomerIDRequired" runat="server" ControlToValidate="txtCustomerID"
+                   CssClass="failureNotification" ErrorMessage="CustomerID is required." ToolTip="CustomerID is required."
+                   ValidationGroup="CustomerValidationGroup"><span style="color:red;"> Required Field</span> </asp:RequiredFieldValidator>
+
+                                </td>
+                                <td><asp:Button ID="btnSearchCustomer" runat="server" CssClass="btn btn-primary" Text="Search"
+                                    ValidationGroup="CustomerValidationGroup" OnClick="btnSearchCustomer_Click1" TabIndex="3"/></td>
+ 
                                 </tr>
                             <tr>
                                 <th>Select Item:</th>

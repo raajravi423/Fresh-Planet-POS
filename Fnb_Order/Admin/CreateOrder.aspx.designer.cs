@@ -42,6 +42,15 @@ namespace Fnb_Order.Admin
         protected global::System.Web.UI.WebControls.TextBox txtCustomerID;
 
         /// <summary>
+        /// CustomerIDRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator CustomerIDRequired;
+
+        /// <summary>
         /// btnSearchCustomer control.
         /// </summary>
         /// <remarks>
