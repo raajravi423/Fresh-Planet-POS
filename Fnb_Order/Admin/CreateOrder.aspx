@@ -75,6 +75,7 @@
     }
 
 
+
     </style>
     
     <script type="text/javascript">
@@ -149,20 +150,36 @@
         
     </script> 
     <style type="text/css">
-        .tbl-default{
-            width: 100%;
-        }
+        
         .td-default {
           float:right
         }
         #main-form > td {
-        width:auto%;
+        width:200px;
         }
         #main-form > th {
         text-align:right;
         width:auto;
         overflow:auto;
         }
+#customerdetail
+{
+width:100%;
+
+}
+
+#customerdetail > th {
+        text-align:right;
+        width:auto;
+        overflow:auto;
+        }
+
+#customerdetail > th,td
+{
+ width:200px;
+}
+
+
 
     </style>
 </asp:Content>
@@ -181,32 +198,32 @@
                             <tr>
                                 <th></th>
                                 <th  style="text-align:center;">
-                                    <asp:RadioButtonList ID="rdoCustomerType" TextAlign="right" runat="server">
+                                    <asp:RadioButtonList ID="rdoCustomerType" TextAlign="right" runat="server" TabIndex="0">
                                         <asp:ListItem Text="FPBGF" Value="FPBGF" Selected="True"></asp:ListItem>
                                     </asp:RadioButtonList>
                                 </th>
                                 </tr>
                             <tr>
                                 <th>Order Date:</th>
-                                <td><asp:TextBox ID="txtDate" runat="server" CssClass="datepicker input-with-feedback form-control" ></asp:TextBox></td>
+                                <td><asp:TextBox ID="txtDate" runat="server" CssClass="datepicker input-with-feedback form-control" TabIndex="1" ></asp:TextBox></td>
                             </tr>
                             <tr>
                                 <th>Customer ID:</th>
-                                <td><asp:TextBox ID="txtCustomerID" runat="server" placeholder="Customer ID Ex. 1,2.." CssClass="input-with-feedback form-control" ></asp:TextBox></td>
-                                <td><asp:Button ID="btnSearchCustomer" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnSearchCustomer_Click1" /></td>
+                                <td><asp:TextBox ID="txtCustomerID" runat="server" placeholder="Customer ID Ex. 1,2.." CssClass="input-with-feedback form-control" TabIndex="2"></asp:TextBox></td>
+                                <td><asp:Button ID="btnSearchCustomer" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnSearchCustomer_Click1" TabIndex="3"/></td>
                                 </tr>
                             <tr>
                                 <th>Select Item:</th>
-                                <td ><asp:TextBox ID="txtSelectItem" runat="server" placeholder="Item Name" CssClass="input-with-feedback form-control"  ></asp:TextBox></td>
+                                <td ><asp:TextBox ID="txtSelectItem" runat="server" placeholder="Item Name" CssClass="input-with-feedback form-control" TabIndex="4" ></asp:TextBox></td>
                             </tr>
                             <tr>
                                 <th>Qty.</th>
                                 <td >
-                                    <asp:TextBox ID="txtQuantity" runat="server" placeholder="Weight in Kg." CssClass="input-with-feedback form-control" ></asp:TextBox>
+                                    <asp:TextBox ID="txtQuantity" runat="server" placeholder="Weight in Kg." CssClass="input-with-feedback form-control" TabIndex="5"></asp:TextBox>
                                  </td>
                                 <td>
 <%--                                    <asp:Label ID="Label2" runat="server" Visible="true" Text="KG"></asp:Label>--%>
-                                    <asp:Button ID="BtnAddQuantity" runat="server" Text="Add" CssClass="btn btn-primary" OnClick="BtnAddQuantity_Click" />
+                                    <asp:Button ID="BtnAddQuantity" runat="server" Text="Add" CssClass="btn btn-primary" OnClick="BtnAddQuantity_Click" TabIndex="6" />
 
 <%--                                    <asp:Label ID="lblVegItems" runat="server" Visible="true" Text=""></asp:Label>
                                     <asp:Label ID="Label1" runat="server" Visible="true" Text="X"></asp:Label>--%>
@@ -230,7 +247,7 @@
                         <asp:UpdatePanel ID="udpcutomerdetails" runat="server">     
                             <ContentTemplate>
                             <asp:Panel ID="pnlcustomerdetail" runat="server" Visible="false">
-                                <table class="tbl-default">
+                                <table id="customerdetail">
                             <tr>
                                 <th>Customer ID:</th>
                                 <td><asp:Label ID="lblCustomerID"  runat="server"></asp:Label></td>
@@ -261,15 +278,16 @@
                                      OnRowCancelingEdit="canceledit" OnRowDeleting="delete" OnRowUpdating="Update">
                                      <AlternatingRowStyle BackColor="White" />
                                      <Columns>
-                                        <asp:CommandField ShowEditButton="True" />
-                                        <asp:CommandField ShowDeleteButton="True" />
-                                          <asp:boundfield datafield="SERIAL" readonly="true" headertext="SERIAL"/>
+                                     
+                                      <asp:boundfield datafield="SERIAL" readonly="true" headertext="SERIAL"/>
                                       <asp:boundfield datafield="ItemID" readonly="true" headertext="ItemID"/>
                                       <asp:boundfield datafield="ItemName" readonly="true"  headertext="ItemName"/>
                                       <asp:boundfield datafield="Qty" headertext="Qty"/>
                                       <asp:boundfield datafield="RateSlab" readonly="true"  headertext="RateSlab"/>
-                                         <asp:boundfield datafield="Rate" readonly="true"  headertext="Rate"/>
-                                         <asp:boundfield datafield="TotalAmount" readonly="true"  headertext="TotalAmount"/>
+                                      <asp:boundfield datafield="Rate" readonly="true"  headertext="Rate"/>
+                                      <asp:boundfield datafield="TotalAmount" readonly="true"  headertext="TotalAmount"/>
+                                      <asp:CommandField ShowEditButton="True" />
+                                      <asp:CommandField ShowDeleteButton="True" />
                                     </Columns>
 
                                      <EditRowStyle BackColor="#2461BF" />
