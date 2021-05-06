@@ -183,8 +183,14 @@
                             </tr>
                             <tr>
                                 <th>Customer ID:</th>
-                                <td colspan="2"><asp:TextBox ID="txtCustomerID" runat="server" CssClass="input-with-feedback form-control" ></asp:TextBox></td>
-                                <td><asp:Button ID="btnSearchCustomer" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnSearchCustomer_Click1" /></td>
+                                <td colspan="2"><asp:TextBox ID="txtCustomerID"  runat="server" CssClass="input-with-feedback form-control" ></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="CustomerIDRequired" runat="server" ControlToValidate="txtCustomerID"
+                   CssClass="failureNotification" ErrorMessage="CustomerID is required." ToolTip="CustomerID is required."
+                   ValidationGroup="CustomerValidationGroup"><span style="color:red;"> Required Field</span> </asp:RequiredFieldValidator>
+
+                                </td>
+                                <td><asp:Button ID="btnSearchCustomer" runat="server" CssClass="btn btn-primary" Text="Search"
+                                    ValidationGroup="CustomerValidationGroup" OnClick="btnSearchCustomer_Click1" /></td>
                                 </tr>
                             <tr>
                                 <th>Select Item:</th>
