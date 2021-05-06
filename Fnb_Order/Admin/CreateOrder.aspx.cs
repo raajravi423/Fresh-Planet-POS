@@ -132,7 +132,7 @@ namespace Fnb_Order.Admin
             if (ViewState["Curtbl"] != null)
             {
                 DataTable dt = (DataTable)ViewState["Curtbl"];
-                // dt.Columns.Add("",)
+
                 DataRow drCurrentRow = null;
                 if (dt.Rows.Count > 0)
                 {
@@ -156,6 +156,7 @@ namespace Fnb_Order.Admin
                         drCurrentRow["Qty"] = txtQuantity.Text.ToString();
                         drCurrentRow["RateSlab"] = 0.00;
                         drCurrentRow["Rate"] = 0.00;
+
                         drCurrentRow["TotalAmount"] = 0.00;
                         rowIndex++;
                     }
@@ -171,6 +172,7 @@ namespace Fnb_Order.Admin
                 Response.Write("ViewState Value is Null");
             }
             //SetOldData();
+
         }
 
         protected void BindGridview()
@@ -343,6 +345,7 @@ namespace Fnb_Order.Admin
             //gvOrderItem.Rows[1].Cells[3].Text = "";
             //gvOrderItem.Rows[1].Cells[3].Text = value;
         }
+
 
         //private void SetOldData()
         //{

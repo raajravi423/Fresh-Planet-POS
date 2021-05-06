@@ -61,6 +61,7 @@ namespace Fnb_Order.Admin
 
         /// <summary>
         /// txtQuantity control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -70,6 +71,7 @@ namespace Fnb_Order.Admin
 
         /// <summary>
         /// BtnAddQuantity control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -79,6 +81,7 @@ namespace Fnb_Order.Admin
 
         /// <summary>
         /// hdnItemID control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -93,16 +96,19 @@ namespace Fnb_Order.Admin
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+
         protected global::System.Web.UI.UpdatePanel udpcutomerdetails;
 
         /// <summary>
         /// pnlcustomerdetail control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlcustomerdetail;
+
 
         /// <summary>
         /// lblCustomerID control.

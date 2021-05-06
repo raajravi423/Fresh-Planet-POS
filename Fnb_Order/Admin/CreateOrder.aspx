@@ -141,6 +141,7 @@
                 select: function (event, ui) {
                     
             <%--        $('#<%=lblVegItems.ClientID%>').text(ui.item.value)--%>;
+
                     $('#<%=hdnItemID.ClientID%>').attr('value',ui.item.data); 
                  
                 },
@@ -199,6 +200,7 @@ width:100%;
                                 <th></th>
                                 <th  style="text-align:center;">
                                     <asp:RadioButtonList ID="rdoCustomerType" TextAlign="right" runat="server" TabIndex="0">
+
                                         <asp:ListItem Text="FPBGF" Value="FPBGF" Selected="True"></asp:ListItem>
                                     </asp:RadioButtonList>
                                 </th>
@@ -229,6 +231,27 @@ width:100%;
                                     <asp:Label ID="Label1" runat="server" Visible="true" Text="X"></asp:Label>--%>
 
                                     
+                                   
+
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                  <asp:HiddenField ID="hdnItemID" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <td colspan="3">
+
+                                    <asp:Label ID="lblVegItems" runat="server" Visible="true" Text=""></asp:Label>
+                                    <asp:Label ID="Label1" runat="server" Visible="true" Text="X"></asp:Label>
+
+                                    <asp:TextBox ID="txtQuantity" runat="server"></asp:TextBox>
+                                    <asp:Label ID="Label2" runat="server" Visible="true" Text="KG"></asp:Label>
+                                    <asp:Button ID="BtnAddQuantity" runat="server" Text="Add" OnClick="BtnAddQuantity_Click" />
+                                      <%--  <asp:Label ID="lblItemID" runat="server" Visible="true" Text="9"></asp:Label>--%>
                                    
 
                                 </td>
@@ -278,13 +301,12 @@ width:100%;
                                      OnRowCancelingEdit="canceledit" OnRowDeleting="delete" OnRowUpdating="Update">
                                      <AlternatingRowStyle BackColor="White" />
                                      <Columns>
-                                     
                                       <asp:boundfield datafield="SERIAL" readonly="true" headertext="SERIAL"/>
                                       <asp:boundfield datafield="ItemID" readonly="true" headertext="ItemID"/>
                                       <asp:boundfield datafield="ItemName" readonly="true"  headertext="ItemName"/>
                                       <asp:boundfield datafield="Qty" headertext="Qty"/>
                                       <asp:boundfield datafield="RateSlab" readonly="true"  headertext="RateSlab"/>
-                                      <asp:boundfield datafield="Rate" readonly="true"  headertext="Rate"/>
+                                     <asp:boundfield datafield="Rate" readonly="true"  headertext="Rate"/>
                                       <asp:boundfield datafield="TotalAmount" readonly="true"  headertext="TotalAmount"/>
                                       <asp:CommandField ShowEditButton="True" />
                                       <asp:CommandField ShowDeleteButton="True" />
