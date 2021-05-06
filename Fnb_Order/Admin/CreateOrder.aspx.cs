@@ -23,23 +23,23 @@ namespace Fnb_Order.Admin
                 BindGridview();
                 gvOrderItem.Visible = false;
             }
-        }      
+        }
 
         protected void btnSearchCustomer_Click1(object sender, EventArgs e)
-            {
+        {
             DataTable DatasetcustomerDetails = new DataTable();
             SqlConnection oConn = new SqlConnection(GlobalPath.ConnectionString);
             SqlCommand oComm = new SqlCommand("usp_GetCustomerByID", oConn);
             oComm.CommandType = CommandType.StoredProcedure;
             string customerParameter = rdoCustomerType.Text.ToString();
-            string searchInput = rdoCustomerType.Text.ToString()+txtCustomerID.Text.ToString().PadLeft(2, '0');
+            string searchInput = rdoCustomerType.Text.ToString() + txtCustomerID.Text.ToString().PadLeft(2, '0');
             oComm.Parameters.AddWithValue("@CustomerID ", searchInput);
             SqlDataAdapter da = new SqlDataAdapter(oComm);
             oConn.Open();
             da.Fill(DatasetcustomerDetails);
 
             oConn.Close();
-            if( DatasetcustomerDetails.Rows[0] != null)
+            if (DatasetcustomerDetails.Rows[0] != null)
             {
 
                 lblOrderDate.Text = txtDate.Text;
@@ -47,6 +47,11 @@ namespace Fnb_Order.Admin
                 lblCustomerName.Text = DatasetcustomerDetails.Rows[0]["CustomerName"].ToString();
                 lblContactNo.Text = DatasetcustomerDetails.Rows[0]["MobileNumber"].ToString();
                 lblAddress.Text = DatasetcustomerDetails.Rows[0]["Address"].ToString();
+                pnlcustomerdetail.Visible = true;
+            }
+            else
+            {
+                pnlcustomerdetail.Visible = false;
             }
 
         }
@@ -58,19 +63,19 @@ namespace Fnb_Order.Admin
             List<string> customers = new List<string>();
             //  string cs = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
             try
-            { 
+            {
                 DataSet DatasetcustomerDetails = new DataSet();
                 VegetablesItems Vegetables = null;
-              
+
                 SqlConnection oConn = new SqlConnection(GlobalPath.ConnectionString);
                 SqlCommand oComm = new SqlCommand("usp_GetItemsWithKeyAndItemName", oConn);
                 oComm.CommandType = CommandType.StoredProcedure;
-                oComm.Parameters.AddWithValue("@Key ", Itemname);                 
+                oComm.Parameters.AddWithValue("@Key ", Itemname);
                 SqlDataAdapter da = new SqlDataAdapter(oComm);
                 oConn.Open();
                 da.Fill(DatasetcustomerDetails);
                 oConn.Close();
-                
+
                 if (DatasetcustomerDetails.Tables[0] != null)
                 {
                     for (int i = 0; i < DatasetcustomerDetails.Tables[0].Rows.Count; i++)
@@ -82,7 +87,7 @@ namespace Fnb_Order.Admin
                         // vegetablesItemsobj.Add(Vegetables);
                         customers.Add(string.Format("{0}-{1}", Convert.ToInt32(DatasetcustomerDetails.Tables[0].Rows[i]["ID"]), Convert.ToString(DatasetcustomerDetails.Tables[0].Rows[i]["Item"])));
                     }
-                } 
+                }
 
             }
             catch (Exception ex)
@@ -121,13 +126,13 @@ namespace Fnb_Order.Admin
         private void AddNewRow()
         {
             gvOrderItem.Visible = true;
-           
+
             int rowIndex = 0;
 
             if (ViewState["Curtbl"] != null)
             {
                 DataTable dt = (DataTable)ViewState["Curtbl"];
-               // dt.Columns.Add("",)
+
                 DataRow drCurrentRow = null;
                 if (dt.Rows.Count > 0)
                 {
@@ -150,7 +155,8 @@ namespace Fnb_Order.Admin
                         drCurrentRow["ItemName"] = txtSelectItem.Text.ToString();
                         drCurrentRow["Qty"] = txtQuantity.Text.ToString();
                         drCurrentRow["RateSlab"] = 0.00;
-                        drCurrentRow["Rate"] = 0.00; 
+                        drCurrentRow["Rate"] = 0.00;
+
                         drCurrentRow["TotalAmount"] = 0.00;
                         rowIndex++;
                     }
@@ -166,12 +172,13 @@ namespace Fnb_Order.Admin
                 Response.Write("ViewState Value is Null");
             }
             //SetOldData();
+
         }
-        
+
         protected void BindGridview()
         {
             DataTable dt = new DataTable();
-          //  dt.Columns.Add("rowId", typeof(int));
+            //  dt.Columns.Add("rowId", typeof(int));
             dt.Columns.Add(new DataColumn("SERIAL", Type.GetType("System.Int16")));
             dt.Columns.Add(new DataColumn("ItemID", Type.GetType("System.Int32")));
             dt.Columns.Add(new DataColumn("ItemName", Type.GetType("System.String")));
@@ -180,7 +187,7 @@ namespace Fnb_Order.Admin
             dt.Columns.Add(new DataColumn("Rate", Type.GetType("System.Decimal")));
             dt.Columns.Add(new DataColumn("TotalAmount", Type.GetType("System.Decimal")));
 
-            DataRow row = dt.NewRow(); 
+            DataRow row = dt.NewRow();
             //row["rowId"] = 1;
             //row["SERIAL"] = 1;
             //row["ItemID"] = 2;
@@ -191,9 +198,9 @@ namespace Fnb_Order.Admin
             //row["TotalAmount"] = "200.00";
             dt.Rows.Add(row);
             ViewState["Curtbl"] = dt;
-          
+
             gvOrderItem.DataSource = dt;
-            
+
             gvOrderItem.DataBind();
             gvOrderItem.Rows[0].Visible = false;
         }
@@ -204,12 +211,12 @@ namespace Fnb_Order.Admin
             DatasetcustomerDetails = (DataTable)ViewState["Curtbl"];
             DatasetcustomerDetails.Rows.RemoveAt(0);
             SqlConnection oConn = new SqlConnection(GlobalPath.ConnectionString);
-           // SqlCommand oComm = new SqlCommand("usp_CreateB2BOrder2", oConn);
+            // SqlCommand oComm = new SqlCommand("usp_CreateB2BOrder2", oConn);
 
             oConn.Open();
             SqlDataAdapter odb = new SqlDataAdapter();
-           // odb.SelectCommand = oComm;
-           // odb.Fill(DatasetcustomerDetails);
+            // odb.SelectCommand = oComm;
+            // odb.Fill(DatasetcustomerDetails);
             if (DatasetcustomerDetails.Rows.Count > 0)
             {
                 using (SqlConnection sqlConnection = new SqlConnection(GlobalPath.ConnectionString))
@@ -218,7 +225,7 @@ namespace Fnb_Order.Admin
                     {
                         sqlCommand.CommandType = CommandType.StoredProcedure;
                         sqlCommand.Connection = sqlConnection;
-                        sqlCommand.Parameters.AddWithValue("@OrderDate",txtDate.Text.ToString());
+                        sqlCommand.Parameters.AddWithValue("@OrderDate", txtDate.Text.ToString());
                         sqlCommand.Parameters.AddWithValue("@CustomerID", lblCustomerID.Text.ToString());
                         sqlCommand.Parameters.AddWithValue("@ItemList", DatasetcustomerDetails);
                         sqlCommand.Parameters.AddWithValue("@CreatedBy", SessionHandler.UserID);
@@ -261,11 +268,11 @@ namespace Fnb_Order.Admin
             CreateFinalOrder();
         }
 
-       public void BindGridAfterAdd()
+        public void BindGridAfterAdd()
         {
             DataTable dt = new DataTable();
 
-            dt=(DataTable)ViewState["Curtbl"]; 
+            dt = (DataTable)ViewState["Curtbl"];
             gvOrderItem.DataSource = dt;
             gvOrderItem.DataBind();
             gvOrderItem.Rows[0].Visible = false;
@@ -274,11 +281,11 @@ namespace Fnb_Order.Admin
         protected void canceledit(object sender, GridViewCancelEditEventArgs e)
         {
             gvOrderItem.EditIndex = -1;
-              BindGridAfterAdd();
+            BindGridAfterAdd();
         }
 
         protected void delete(object sender, GridViewDeleteEventArgs e)
-        { 
+        {
             string ItemID = gvOrderItem.Rows[1].Cells[3].Text;
             DataTable dt = new DataTable();
 
@@ -307,16 +314,16 @@ namespace Fnb_Order.Admin
         protected void Update(object sender, GridViewUpdateEventArgs e)
         {
             string UpdatedQty = Convert.ToString(e.NewValues["Qty"]);
-           // string ItemID = Convert.ToString(e.NewValues["ItemID"]);
+            // string ItemID = Convert.ToString(e.NewValues["ItemID"]);
             string ItemID = gvOrderItem.Rows[1].Cells[3].Text;
             DataTable dt = new DataTable();
 
             dt = (DataTable)ViewState["Curtbl"];
-           
-            DataRow dr = dt.Select("ItemID="+ ItemID).FirstOrDefault(); // finds all rows with id==2 and selects first or null if haven't found any
+
+            DataRow dr = dt.Select("ItemID=" + ItemID).FirstOrDefault(); // finds all rows with id==2 and selects first or null if haven't found any
             if (dr != null)
             {
-                
+
                 dr["Qty"] = UpdatedQty; //changes the quantity
             }
             dt.AcceptChanges();
@@ -324,7 +331,7 @@ namespace Fnb_Order.Admin
             gvOrderItem.DataSource = dt;
             gvOrderItem.DataBind();
             gvOrderItem.Rows[0].Visible = false;
-            
+
             //UpdatingTextBox.Text = (String)e.NewValues["Field2"];
             //DataTable dt = new DataTable();
 
@@ -338,6 +345,7 @@ namespace Fnb_Order.Admin
             //gvOrderItem.Rows[1].Cells[3].Text = "";
             //gvOrderItem.Rows[1].Cells[3].Text = value;
         }
+
 
         //private void SetOldData()
         //{
