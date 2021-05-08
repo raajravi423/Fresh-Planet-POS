@@ -236,7 +236,7 @@ width:100%;
                                 </td>
                             </tr>
                             
-                            <tr>
+<%--                            <tr>
                                 <td>
                                   <asp:HiddenField ID="hdnItemID" runat="server" />
                                 </td>
@@ -303,13 +303,13 @@ width:100%;
                                      <Columns>
                                       <asp:boundfield datafield="SERIAL" readonly="true" headertext="SERIAL"/>
                                       <asp:boundfield datafield="ItemID" readonly="true" headertext="ItemID"/>
-                                      <asp:boundfield datafield="ItemName" readonly="true"  headertext="ItemName"/>
+                                      <asp:boundfield datafield="ItemName" readonly="true" ControlStyle-Width="150px"  headertext="ItemName"/>
                                       <asp:boundfield datafield="Qty" headertext="Qty"/>
-                                      <asp:boundfield datafield="RateSlab" readonly="true"  headertext="RateSlab"/>
-                                     <asp:boundfield datafield="Rate" readonly="true"  headertext="Rate"/>
-                                      <asp:boundfield datafield="TotalAmount" readonly="true"  headertext="TotalAmount"/>
-                                      <asp:CommandField ShowEditButton="True" />
-                                      <asp:CommandField ShowDeleteButton="True" />
+                                      <asp:boundfield datafield="RateSlab" readonly="true" Visible="false" headertext="RateSlab"/>
+                                     <asp:boundfield datafield="Rate" readonly="true" Visible="false"  headertext="Rate"/>
+                                      <asp:boundfield datafield="TotalAmount" readonly="true" Visible="false"  headertext="TotalAmount"/>
+                                      <asp:CommandField ShowEditButton="True" ControlStyle-CssClass="btn btn-primary" />
+                                      <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="btn btn-primary"  />
                                     </Columns>
 
                                      <EditRowStyle BackColor="#2461BF" />
