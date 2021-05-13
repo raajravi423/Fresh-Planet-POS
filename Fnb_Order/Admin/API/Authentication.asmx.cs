@@ -31,4 +31,10 @@ namespace Fnb_Order.Admin.API
             //   return stuList;
         }
     }
+
+    internal class Student
+    {
+        public string ID { get; set; }
+        public string Name { get; set; }
+    }
 }
