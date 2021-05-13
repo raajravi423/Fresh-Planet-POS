@@ -69,25 +69,8 @@ namespace Fnb_Order.Admin
         protected global::System.Web.UI.WebControls.TextBox txtSelectItem;
 
         /// <summary>
-        /// lblVegItems control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVegItems;
-
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-
-        /// <summary>
         /// txtQuantity control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -96,16 +79,8 @@ namespace Fnb_Order.Admin
         protected global::System.Web.UI.WebControls.TextBox txtQuantity;
 
         /// <summary>
-        /// Label2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
-
-        /// <summary>
         /// BtnAddQuantity control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -115,12 +90,34 @@ namespace Fnb_Order.Admin
 
         /// <summary>
         /// hdnItemID control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdnItemID;
+
+        /// <summary>
+        /// udpcutomerdetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+
+        protected global::System.Web.UI.UpdatePanel udpcutomerdetails;
+
+        /// <summary>
+        /// pnlcustomerdetail control.
+
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlcustomerdetail;
+
 
         /// <summary>
         /// lblCustomerID control.
