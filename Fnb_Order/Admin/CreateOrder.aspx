@@ -70,6 +70,7 @@
             background-color: #2980b9;
             border-color: #2472a4;
             color: #fff;
+            text-decoration:none;
         }
 
             .btn-primary:hover {
@@ -145,9 +146,7 @@
                 overflow: auto;
             }
 
-            #customerdetail > th, td {
-                width: 200px;
-            }
+           
         .grid-header {
         text-align:left;
         }
@@ -241,33 +240,60 @@
 
                                         <tr>
                                             <td colspan="4">
-                                                <asp:GridView ID="gvOrderItem" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None"
-                                                    DataKeyNames="ItemID" OnRowEditing="Edit" AutoGenerateColumns="false"
-                                                    OnRowCancelingEdit="canceledit" OnRowDeleting="delete" OnRowUpdating="Update">
-                                                    <AlternatingRowStyle BackColor="White" />
+                                                <asp:GridView ID="gvOrderItem" Width="500px" runat="server" CellPadding="4" ForeColor="Black" GridLines="Horizontal" 
+                                                    DataKeyNames="ItemID" OnRowEditing="Edit" AutoGenerateColumns="False" 
+                                                    OnRowCancelingEdit="canceledit" OnRowDeleting="delete" OnRowUpdating="Update" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                                                     <Columns>
-                                                        <asp:BoundField DataField="SERIAL" ReadOnly="true" ControlStyle-Width="30px" HeaderText="SERIAL" HeaderStyle-CssClass="grid-header" />
-                                                        <asp:BoundField DataField="ItemID" ReadOnly="true" ControlStyle-Width="30px" HeaderText="ItemID" HeaderStyle-CssClass="grid-header" />
-                                                        <asp:BoundField DataField="ItemName" ReadOnly="true" ControlStyle-Width="150px" HeaderText="ItemName" HeaderStyle-CssClass="grid-header" />
-                                                        <asp:BoundField DataField="Qty" HeaderText="Qty" ControlStyle-Width="30px" HeaderStyle-CssClass="grid-header" />
-                                                        <asp:BoundField DataField="RateSlab" ReadOnly="true" Visible="false" HeaderText="RateSlab" HeaderStyle-CssClass="grid-header" />
-                                                        <asp:BoundField DataField="Rate" ReadOnly="true" Visible="false" HeaderText="Rate" HeaderStyle-CssClass="grid-header" />
-                                                        <asp:BoundField DataField="TotalAmount" ReadOnly="true" Visible="false" HeaderText="TotalAmount" HeaderStyle-CssClass="grid-header" />
-                                                        <asp:CommandField ShowEditButton="True" ControlStyle-CssClass="btn btn-primary" HeaderStyle-CssClass="grid-header" />
-                                                        <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="btn btn-primary" HeaderStyle-CssClass="grid-header" />
-                                                    </Columns>
-
-                                                    <EditRowStyle BackColor="#2461BF" />
-                                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                                                    <RowStyle BackColor="#EFF3FB" />
-                                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                                                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                                                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                                                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                                                        <asp:BoundField DataField="SERIAL" ReadOnly="true" ControlStyle-Width="15px" HeaderText="#" HeaderStyle-CssClass="grid-header" >
+                                                        <ControlStyle Width="15px" />
+                                                        <HeaderStyle CssClass="grid-header" />
+                                                        </asp:BoundField>
+                                                        <asp:BoundField DataField="ItemID" ReadOnly="true" ControlStyle-Width="15px" HeaderText="ID" HeaderStyle-CssClass="grid-header" >
+                                                        <ControlStyle Width="15px" />
+                                                        <HeaderStyle CssClass="grid-header" />
+                                                        </asp:BoundField>
+                                                        <asp:BoundField DataField="ItemName" ReadOnly="true" ControlStyle-Width="150px" HeaderText="ItemName" HeaderStyle-CssClass="grid-header" >
+                                                        <ControlStyle Width="150px" />
+                                                        <HeaderStyle CssClass="grid-header" />
+                                                        </asp:BoundField>
+                                                        <asp:BoundField DataField="Qty" HeaderText="Qty" ControlStyle-Width="30px" HeaderStyle-CssClass="grid-header" >
+                                                        <ControlStyle Width="30px" />
+                                                        <HeaderStyle CssClass="grid-header" />
+                                                        </asp:BoundField>
+                                                        <asp:BoundField DataField="RateSlab" ReadOnly="true" Visible="false" HeaderText="RateSlab" HeaderStyle-CssClass="grid-header" >
+                                                        <HeaderStyle CssClass="grid-header" />
+                                                        </asp:BoundField>
+                                                        <asp:BoundField DataField="Rate" ReadOnly="true" Visible="false" HeaderText="Rate" HeaderStyle-CssClass="grid-header" >
+                                                        <HeaderStyle CssClass="grid-header" />
+                                                        </asp:BoundField>
+                                                        <asp:BoundField DataField="TotalAmount" ReadOnly="true" Visible="false" HeaderText="TotalAmount" HeaderStyle-CssClass="grid-header" >
+                                                        <HeaderStyle CssClass="grid-header" />
+                                                        </asp:BoundField>
+                                                        <asp:CommandField ShowEditButton="True" ControlStyle-CssClass="btn btn-primary"  HeaderStyle-CssClass="grid-header" >
+                                                        <ControlStyle CssClass="btn btn-primary" />
+                                                        <HeaderStyle CssClass="grid-header" />
+                                                        </asp:CommandField>
+                                                        <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="btn btn-primary" HeaderStyle-CssClass="grid-header" >
+                                                        <ControlStyle CssClass="btn btn-primary" />
+                                                        <HeaderStyle CssClass="grid-header" />
+                                                        </asp:CommandField>
+                                                        <asp:TemplateField>
+                                                            <FooterTemplate>
+                                                        <asp:Label ID ="lbltotalqty" runat="server" ></asp:Label>                                                                
+                                                            </FooterTemplate>
+                                                        </asp:TemplateField>
+                                                    </Columns>                                                   
+                                                    
+                                                    <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                                                    <HeaderStyle BackColor="#01a3a3" Font-Bold="True" ForeColor="White" />
+                                                    <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+                                                    <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+                                                    <SortedAscendingCellStyle BackColor="#F7F7F7" />
+                                                    <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+                                                    <SortedDescendingCellStyle BackColor="#E5E5E5" />
+                                                    <SortedDescendingHeaderStyle BackColor="#242121" />
                                                 </asp:GridView>
+                                                
                                             </td>
                                         </tr>
 
