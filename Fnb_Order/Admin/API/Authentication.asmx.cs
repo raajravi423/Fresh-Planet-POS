@@ -35,7 +35,7 @@ namespace Fnb_Order.Admin.API
         }
 
         [WebMethod, ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
-        public HttpStatusCode GetUserAuthentication(string UserName, string UserPassword)
+        public bool GetUserAuthentication(string UserName, string UserPassword)
         {
             DataTable fetchedrecords = new DataTable();
 
@@ -46,17 +46,12 @@ namespace Fnb_Order.Admin.API
             da.Fill(fetchedrecords);
             oConn.Close();
             if (fetchedrecords.Rows.Count > 0)
-            {
-                SessionHandler.UserID = fetchedrecords.Rows[0]["UserID"].ToString();
-                SessionHandler.UserName = fetchedrecords.Rows[0]["UserName"].ToString();
-                SessionHandler.UserRole = fetchedrecords.Rows[0]["UserRole"].ToString();
-
-                return HttpStatusCode.OK;
-               // Response.Redirect("/Admin/UploadRateList.aspx");
+            { 
+                return true; 
             }
             else
             {
-                return HttpStatusCode.Found;
+                return false;
  
             }
         }
