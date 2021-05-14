@@ -26,6 +26,15 @@ namespace Fnb_Order.Admin
             }
         }
 
+        public void clearControls()
+        {
+            lblCustomerID.Text = string.Empty;
+            lblOrderDate.Text = string.Empty;
+            lblCustomerName.Text= string.Empty;
+
+            lblContactNo.Text = string.Empty;
+            lblAddress.Text = "No data Exist";
+        }
         protected void btnSearchCustomer_Click1(object sender, EventArgs e)
         {
             DataTable DatasetcustomerDetails = new DataTable();
@@ -40,7 +49,9 @@ namespace Fnb_Order.Admin
             da.Fill(DatasetcustomerDetails);
 
             oConn.Close();
-            if (DatasetcustomerDetails.Rows[0] != null)
+
+            if( DatasetcustomerDetails.Rows.Count > 0)
+
             {
 
                 lblOrderDate.Text = txtDate.Text;
@@ -48,11 +59,11 @@ namespace Fnb_Order.Admin
                 lblCustomerName.Text = DatasetcustomerDetails.Rows[0]["CustomerName"].ToString();
                 lblContactNo.Text = DatasetcustomerDetails.Rows[0]["MobileNumber"].ToString();
                 lblAddress.Text = DatasetcustomerDetails.Rows[0]["Address"].ToString();
-                pnlcustomerdetail.Visible = true;
-            }
-            else
+
+            }else
             {
-                pnlcustomerdetail.Visible = false;
+                clearControls();
+
             }
 
         }

@@ -118,6 +118,9 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -138,6 +141,7 @@
   <ItemGroup>
     <Content Include="Admin\AddCustomer.aspx" />
     <Content Include="Admin\AddItem.aspx" />
+    <Content Include="Admin\API\Authentication.asmx" />
     <Content Include="Admin\BillingSlip.aspx" />
     <Content Include="Admin\CreateOrder.aspx" />
     <Content Include="Admin\CReport\Print.aspx" />
@@ -220,6 +224,10 @@
     </Compile>
     <Compile Include="Admin\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\API\Authentication.asmx.cs">
+      <DependentUpon>Authentication.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Admin\CreateOrder.aspx.cs">
       <DependentUpon>CreateOrder.aspx</DependentUpon>
