@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace Fnb_Order.Admin
@@ -23,6 +24,7 @@ namespace Fnb_Order.Admin
                 txtDate.Text = currentDate;
                 BindGridview();
                 gvOrderItem.Visible = false;
+                
             }
         }
 
@@ -37,6 +39,7 @@ namespace Fnb_Order.Admin
         }
         protected void btnSearchCustomer_Click1(object sender, EventArgs e)
         {
+            lblOrderMsg.Visible = false;
             DataTable DatasetcustomerDetails = new DataTable();
             SqlConnection oConn = new SqlConnection(GlobalPath.ConnectionString);
             SqlCommand oComm = new SqlCommand("usp_GetCustomerByID", oConn);
@@ -59,11 +62,20 @@ namespace Fnb_Order.Admin
                 lblCustomerName.Text = DatasetcustomerDetails.Rows[0]["CustomerName"].ToString();
                 lblContactNo.Text = DatasetcustomerDetails.Rows[0]["MobileNumber"].ToString();
                 lblAddress.Text = DatasetcustomerDetails.Rows[0]["Address"].ToString();
+                pnlcustomerdetail.Visible = true;
 
-            }else
+            }
+            else
             {
                 clearControls();
+                pnlcustomerdetail.Visible = false;
 
+                //spa myTextboxControl = (Label)Page.f("Body_lblSearchMsg");
+                //Label LabelMsg = this.Master.FindControl("Body").FindControl("lblSearchMsg") as Label;
+
+                lblSearchMsg.Visible = true;
+                lblSearchMsg.Text = "";
+                lblSearchMsg.Text = "Customer Not Found";
             }
 
         }
@@ -107,11 +119,13 @@ namespace Fnb_Order.Admin
 
         protected void BtnAddQuantity_Click(object sender, EventArgs e)
         {
+            lblOrderMsg.Visible = false;
             AddNewRow();
         
         }
         private void AddNewRow()
         {
+          
             gvOrderItem.Visible = true;
 
             int rowIndex = 0;
@@ -166,6 +180,7 @@ namespace Fnb_Order.Admin
             gvOrderItem.DataSource = dt;
             gvOrderItem.DataBind();
             gvOrderItem.Rows[0].Visible = false;
+            gvOrderItem.ShowFooter = true;
         }
 
         public void CreateFinalOrder()
@@ -199,6 +214,7 @@ namespace Fnb_Order.Admin
             gvOrderItem.DataBind();
             ViewState["Curtbl"] = null;
             BindGridview();
+            lblOrderMsg.Visible = true;
         }
         protected void BtnCreateOrder_Click(object sender, EventArgs e)
         {
@@ -223,7 +239,7 @@ namespace Fnb_Order.Admin
 
         protected void delete(object sender, GridViewDeleteEventArgs e)
         {
-            string ItemID = gvOrderItem.Rows[1].Cells[3].Text;
+            string ItemID = gvOrderItem.Rows[1].Cells[1].Text;
             DataTable dt = new DataTable();
 
             dt = (DataTable)ViewState["Curtbl"];
@@ -251,7 +267,7 @@ namespace Fnb_Order.Admin
         protected void Update(object sender, GridViewUpdateEventArgs e)
         {
             string UpdatedQty = Convert.ToString(e.NewValues["Qty"]);
-            string ItemID = gvOrderItem.Rows[1].Cells[3].Text;
+            string ItemID = gvOrderItem.Rows[1].Cells[1].Text;
             DataTable dt = new DataTable();
             dt = (DataTable)ViewState["Curtbl"];
             DataRow dr = dt.Select("ItemID=" + ItemID).FirstOrDefault(); // finds all rows with id==2 and selects first or null if haven't found any
@@ -283,6 +299,28 @@ namespace Fnb_Order.Admin
         private void gettotalquantuty() 
         {
            
+        }
+
+        //Variable to hold the total value
+        int totalvalue = 0;
+        protected void gvOrderItem_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if(DataBinder.Eval(e.Row.DataItem, "Qty") != DBNull.Value)
+            { 
+                //Check if the current row is datarow or not
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    //Add the value of column
+                    totalvalue += Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "Qty"));
+                }
+                if (e.Row.RowType == DataControlRowType.Footer)
+                {
+                    //Find the control label in footer 
+                    Label lblamount = (Label)e.Row.FindControl("lblTotalQty");
+                    //Assign the total value to footer label control
+                    lblamount.Text = "Total Value is : " + totalvalue.ToString();
+                }
+            }
         }
     }
 }

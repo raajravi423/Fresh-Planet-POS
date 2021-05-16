@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -13,9 +14,11 @@ namespace Fnb_Order.Admin.API
     /// <summary>
     /// Summary description for Authentication
     /// </summary>
-    [WebService(Namespace = "http://tempuri.org/")]
+    [WebService(Namespace = "")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
+    //[WebMethod, ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
+     
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     // [System.Web.Script.Services.ScriptService]
     public class Authentication : System.Web.Services.WebService
@@ -26,16 +29,12 @@ namespace Fnb_Order.Admin.API
         {
             List<Student> stuList = new List<Student>();
             stuList.Add(new Student { ID = "123", Name = "Ravi Katiyar" });
-           // return JsonConvert.SerializeObject(stuList);
-            System.Web.Script.Serialization.JavaScriptSerializer js = new System.Web.Script.Serialization.JavaScriptSerializer();
-
-            return js.Serialize(stuList);
-
-            //   return stuList;
+          
+            return JsonConvert.SerializeObject(stuList, Newtonsoft.Json.Formatting.Indented); 
         }
 
         [WebMethod, ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
-        public bool GetUserAuthentication(string UserName, string UserPassword)
+        public string GetUserAuthentication(string UserName, string UserPassword)
         {
             DataTable fetchedrecords = new DataTable();
 
@@ -46,13 +45,12 @@ namespace Fnb_Order.Admin.API
             da.Fill(fetchedrecords);
             oConn.Close();
             if (fetchedrecords.Rows.Count > 0)
-            { 
-                return true; 
+            {
+                return JsonConvert.SerializeObject(true, Newtonsoft.Json.Formatting.Indented); 
             }
             else
             {
-                return false;
- 
+                return JsonConvert.SerializeObject(false, Newtonsoft.Json.Formatting.Indented); 
             }
         }
     }

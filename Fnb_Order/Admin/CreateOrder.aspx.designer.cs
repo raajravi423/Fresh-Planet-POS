@@ -15,6 +15,24 @@ namespace Fnb_Order.Admin
     {
 
         /// <summary>
+        /// udpcutomerdetails01 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel udpcutomerdetails01;
+
+        /// <summary>
+        /// lblSearchMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSearchMsg;
+
+        /// <summary>
         /// rdoCustomerType control.
         /// </summary>
         /// <remarks>
@@ -69,6 +87,15 @@ namespace Fnb_Order.Admin
         protected global::System.Web.UI.WebControls.TextBox txtSelectItem;
 
         /// <summary>
+        /// RFtxtSelectItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFtxtSelectItem;
+
+        /// <summary>
         /// txtQuantity control.
         /// </summary>
         /// <remarks>
@@ -76,6 +103,15 @@ namespace Fnb_Order.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtQuantity;
+
+        /// <summary>
+        /// RFtxtQuantity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFtxtQuantity;
 
         /// <summary>
         /// BtnAddQuantity control.
@@ -157,6 +193,15 @@ namespace Fnb_Order.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnCreateOrder;
+
+        /// <summary>
+        /// lblOrderMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblOrderMsg;
 
         /// <summary>
         /// gvOrderItem control.

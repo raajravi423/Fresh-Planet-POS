@@ -157,6 +157,20 @@
     <div id="dvITTransaction" class="main-content">
         <div class="row dv-header">
             <div class="main-header-text">Create Order</div>
+
+            <div>
+                <asp:UpdatePanel  ID="udpcutomerdetails01" runat="server">
+            <ContentTemplate>
+                <asp:Label ID="lblSearchMsg" runat="server" style="color:red;" Visible="false" Text=""></asp:Label>   
+          </ContentTemplate>
+            
+             <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnSearchCustomer" />
+                            </Triggers>
+                 
+                </asp:UpdatePanel>
+            </div>
+            
         </div>
         <div class="main-body-content">
             <table id="main-form" class="tbl-default">
@@ -164,7 +178,8 @@
                     <td style="width: 30%;">
                         <table class="tbl-default">
                             <tr>
-                                <th></th>
+                                <th>  
+                                </th>
                                 <th style="text-align: center;">
                                     <asp:RadioButtonList ID="rdoCustomerType" TextAlign="right" runat="server" TabIndex="0">
 
@@ -193,15 +208,26 @@
                             <tr>
                                 <th>Select Item:</th>
                                 <td>
-                                    <asp:TextBox ID="txtSelectItem" runat="server" placeholder="Item Name" CssClass="input-with-feedback form-control" TabIndex="4"></asp:TextBox></td>
+                                    <asp:TextBox ID="txtSelectItem" runat="server" placeholder="Item Name" CssClass="input-with-feedback form-control" TabIndex="4"></asp:TextBox>
+                                     <asp:RequiredFieldValidator ID="RFtxtSelectItem" runat="server" ControlToValidate="txtSelectItem"
+                   CssClass="failureNotification" ErrorMessage="Item is required." ToolTip="Item is required."
+                   ValidationGroup="CustomerValidationGroupItem"> <span style="color:red;"> Required Field</span>
+                                     </asp:RequiredFieldValidator>
+                                </td>
+
+                               
                             </tr>
                             <tr>
                                 <th>Qty.</th>
                                 <td>
                                     <asp:TextBox ID="txtQuantity" runat="server" placeholder="Weight in Kg." CssClass="input-with-feedback form-control" TabIndex="5"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RFtxtQuantity" runat="server" ControlToValidate="txtQuantity"
+                   CssClass="failureNotification" ErrorMessage="Quantity is required." ToolTip="Quantity is required."
+                   ValidationGroup="CustomerValidationGroupItem"> <span style="color:red;"> Required Field</span> 
+                                         </asp:RequiredFieldValidator>
                                 </td>
                                 <td>
-                                    <asp:Button ID="BtnAddQuantity" runat="server" Text="Add" CssClass="btn btn-primary" OnClick="BtnAddQuantity_Click" TabIndex="6" />
+                                    <asp:Button ID="BtnAddQuantity" runat="server" Text="Add" CssClass="btn btn-primary"  ValidationGroup="CustomerValidationGroupItem" OnClick="BtnAddQuantity_Click" TabIndex="6" />
 
 
                                     
@@ -216,7 +242,7 @@
                             <ContentTemplate>
                                 <asp:Panel ID="pnlcustomerdetail" runat="server" Visible="false">
                                     <table id="customerdetail">
-                                        <tr>
+                                       <tr>
                                             <th>Customer ID:</th>
                                             <td>
                                                 <asp:Label ID="lblCustomerID" runat="server"></asp:Label></td>
@@ -236,11 +262,13 @@
                                             <th>Address:</th>
                                             <td colspan="3">
                                                 <asp:Label ID="lblAddress" runat="server"></asp:Label></td>
+                                            <td>
+                                               
                                         </tr>
 
                                         <tr>
                                             <td colspan="4">
-                                                <asp:Button ID="BtnCreateOrder" runat="server" CssClass="btn btn-primary" Text="Create Order" OnClick="BtnCreateOrder_Click" />
+                                                <asp:Button ID="BtnCreateOrder" runat="server" CssClass="btn btn-primary" Text="Create Order" OnClick="BtnCreateOrder_Click" /><label id="lblOrderMsg" runat="server"  style="color:red;" > Order Created Successfully! </label>
                                             </td>
                                         </tr>
 
@@ -248,7 +276,7 @@
                                             <td colspan="4">
                                                 <asp:GridView ID="gvOrderItem" Width="500px" runat="server" CellPadding="4" ForeColor="Black" GridLines="Horizontal" 
                                                     DataKeyNames="ItemID" OnRowEditing="Edit" AutoGenerateColumns="False" 
-                                                    OnRowCancelingEdit="canceledit" OnRowDeleting="delete" OnRowUpdating="Update" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+                                                    OnRowCancelingEdit="canceledit" OnRowDeleting="delete" OnRowUpdating="Update" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" OnRowDataBound="gvOrderItem_RowDataBound">
                                                     <Columns>
                                                         <asp:BoundField DataField="SERIAL" ReadOnly="true" ControlStyle-Width="15px" HeaderText="#" HeaderStyle-CssClass="grid-header" >
                                                         <ControlStyle Width="15px" />
@@ -278,14 +306,17 @@
                                                         <asp:CommandField ShowEditButton="True" ControlStyle-CssClass="btn btn-primary"  HeaderStyle-CssClass="grid-header" >
                                                         <ControlStyle CssClass="btn btn-primary" />
                                                         <HeaderStyle CssClass="grid-header" />
+
                                                         </asp:CommandField>
                                                         <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="btn btn-primary" HeaderStyle-CssClass="grid-header" >
                                                         <ControlStyle CssClass="btn btn-primary" />
                                                         <HeaderStyle CssClass="grid-header" />
                                                         </asp:CommandField>
                                                         <asp:TemplateField>
-                                                            <FooterTemplate>
-                                                        <asp:Label ID ="lbltotalqty" runat="server" ></asp:Label>                                                                
+                                                          
+                                                    <FooterTemplate>
+                  <asp:Label runat="server" ID="lblTotalQty" Text='<%# Eval("Qty") %>' Visible="true"></asp:Label>
+                                                                                        
                                                             </FooterTemplate>
                                                         </asp:TemplateField>
                                                     </Columns>                                                   
@@ -298,13 +329,16 @@
                                                     <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
                                                     <SortedDescendingCellStyle BackColor="#E5E5E5" />
                                                     <SortedDescendingHeaderStyle BackColor="#242121" />
+                                                    
                                                 </asp:GridView>
                                                 
                                             </td>
                                         </tr>
 
                                         <tr>
-                                            <td colspan="4"></td>
+                      <td colspan="4">
+                         
+    </td>
 
                                         </tr>
                                     </table>
@@ -323,6 +357,7 @@
                         <asp:HiddenField ID="hdnItemID" runat="server" />
                     </td>
                 </tr>
+                 
             </table>
            
         </div>
