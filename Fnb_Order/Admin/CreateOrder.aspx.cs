@@ -40,6 +40,7 @@ namespace Fnb_Order.Admin
         protected void btnSearchCustomer_Click1(object sender, EventArgs e)
         {
             lblOrderMsg.Visible = false;
+            lblSearchMsg.Visible = false;
             DataTable DatasetcustomerDetails = new DataTable();
             SqlConnection oConn = new SqlConnection(GlobalPath.ConnectionString);
             SqlCommand oComm = new SqlCommand("usp_GetCustomerByID", oConn);
@@ -187,34 +188,47 @@ namespace Fnb_Order.Admin
         {
             DataTable DatasetcustomerDetails = new DataTable();
             DatasetcustomerDetails = (DataTable)ViewState["Curtbl"];
-            DatasetcustomerDetails.Rows.RemoveAt(0);
-            SqlConnection oConn = new SqlConnection(GlobalPath.ConnectionString);
-            oConn.Open();
-            SqlDataAdapter odb = new SqlDataAdapter();
-            if (DatasetcustomerDetails.Rows.Count > 0)
+
+            if (DatasetcustomerDetails.Rows.Count > 1)
             {
-                using (SqlConnection sqlConnection = new SqlConnection(GlobalPath.ConnectionString))
+                DatasetcustomerDetails.Rows.RemoveAt(0);
+                SqlConnection oConn = new SqlConnection(GlobalPath.ConnectionString);
+                oConn.Open();
+                SqlDataAdapter odb = new SqlDataAdapter();
+                if (DatasetcustomerDetails.Rows.Count > 0)
                 {
-                    using (SqlCommand sqlCommand = new SqlCommand("usp_CreateB2BOrder"))
+                    using (SqlConnection sqlConnection = new SqlConnection(GlobalPath.ConnectionString))
                     {
-                        sqlCommand.CommandType = CommandType.StoredProcedure;
-                        sqlCommand.Connection = sqlConnection;
-                        sqlCommand.Parameters.AddWithValue("@OrderDate", txtDate.Text.ToString());
-                        sqlCommand.Parameters.AddWithValue("@CustomerID", lblCustomerID.Text.ToString());
-                        sqlCommand.Parameters.AddWithValue("@ItemList", DatasetcustomerDetails);
-                        sqlCommand.Parameters.AddWithValue("@CreatedBy", SessionHandler.UserID);
-                        sqlConnection.Open();
-                        sqlCommand.ExecuteNonQuery();
-                        sqlConnection.Close();
+                        using (SqlCommand sqlCommand = new SqlCommand("usp_CreateB2BOrder"))
+                        {
+                            sqlCommand.CommandType = CommandType.StoredProcedure;
+                            sqlCommand.Connection = sqlConnection;
+                            sqlCommand.Parameters.AddWithValue("@OrderDate", txtDate.Text.ToString());
+                            sqlCommand.Parameters.AddWithValue("@CustomerID", lblCustomerID.Text.ToString());
+                            sqlCommand.Parameters.AddWithValue("@ItemList", DatasetcustomerDetails);
+                            sqlCommand.Parameters.AddWithValue("@CreatedBy", SessionHandler.UserID);
+                            sqlConnection.Open();
+                            sqlCommand.ExecuteNonQuery();
+                            sqlConnection.Close();
+                        }
                     }
                 }
+
+                gvOrderItem.DataSource = null;
+                gvOrderItem.DataBind();
+                ViewState["Curtbl"] = null;
+                BindGridview();
+                lblOrderMsg.Visible = true;
+                lblOrderMsg.InnerText = "Order Created Successfully!";
+                txtSelectItem.Text = string.Empty;
+                txtQuantity.Text = string.Empty;
+            }else
+            {
+                lblOrderMsg.Visible = true;
+                lblOrderMsg.InnerText = "Please give the Order First!";
             }
 
-            gvOrderItem.DataSource = null;
-            gvOrderItem.DataBind();
-            ViewState["Curtbl"] = null;
-            BindGridview();
-            lblOrderMsg.Visible = true;
+          
         }
         protected void BtnCreateOrder_Click(object sender, EventArgs e)
         {
